@@ -13,7 +13,7 @@ function Hero() {
       <img
         src={IMAGES.hero}
         alt="Gym training"
-        className="absolute inset-0 w-full h-full object-cover opacity-25"
+        className="absolute inset-0 w-full h-full object-cover  opacity-25"
         loading="eager"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
@@ -24,60 +24,60 @@ function Hero() {
       {/* Big number */}
       <span className="absolute right-4 top-1/2 -translate-y-1/2 font-black text-yellow-400/[0.03] leading-none select-none pointer-events-none hidden xl:block" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "18vw" }}>99</span>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 lg:pt-20 pb-10 lg:pb-12 w-full">
+      <div className="relative z-10 max-w-7xl mt-10 mx-auto px-6 pt-16 lg:pt-20 pb-10 lg:pb-12 w-full">
         <FadeIn>
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-block bg-yellow-400 text-black text-[11px] font-black uppercase tracking-[0.28em] px-4 py-1.5 mb-5">Est. 2019 · Noida, UP</div>
-              <h1 className="font-black text-white mb-4 leading-[0.95]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "85px" }}>
+              <div className="inline-block bg-yellow-400 text-black text-[10px] sm:text-[11px] font-black uppercase tracking-[0.28em] px-4 py-1.5 mb-5">Est. 2019 · Noida, UP</div>
+              
+              {/* Responsive Heading: Mobile pe text chota, Desktop pe 85px */}
+              <h1 className="font-black text-white mb-4 leading-[0.95] text-5xl sm:text-6xl lg:text-[85px]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 FORGE YOUR<br /><span className="text-yellow-400">LEGEND</span>
               </h1>
-              <p className="text-white/50 text-base max-w-xl leading-relaxed mb-4 font-light">
+              
+              <p className="text-white/50 text-sm sm:text-base max-w-xl leading-relaxed mb-6 font-light">
                 A modern performance gym built for real results. Train smarter with elite coaching, high-end equipment, and a community that keeps you consistent.
               </p>
 
-              <div className="grid sm:grid-cols-2 gap-2 mb-5 max-w-xl">
+              <div className="grid sm:grid-cols-2 gap-3 mb-6 max-w-xl">
                 {[
-                  "Goal-based training plans (fat loss or muscle gain)",
-                  "Certified coaches + form-first coaching",
-                  "Strength, HIIT, Mobility, Boxing — under one roof",
-                  "Progress tracking + accountability",
+                  "Goal-based training plans",
+                  "Certified coaches + form-first",
+                  "Strength, HIIT, & Boxing",
+                  "Progress tracking",
                 ].map((t) => (
-                  <div key={t} className="flex items-start gap-2.5 text-white/60 text-[13px] leading-relaxed">
-                    <span className="mt-0.5 w-6 h-6 rounded-xl bg-yellow-400/15 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-yellow-300" />
+                  <div key={t} className="flex items-start gap-2.5 text-white/60 text-[12px] sm:text-[13px] leading-relaxed">
+                    <span className="mt-0.5 w-5 h-5 rounded-lg bg-yellow-400/15 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3.5 h-3.5 text-yellow-300" />
                     </span>
                     <span>{t}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-2.5 mb-6">
-                <div className="inline-flex items-center gap-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur px-3.5 py-2">
+              {/* Stats: Mobile pe wrapping achhi dikhegi */}
+              <div className="flex flex-wrap items-center gap-2 mb-8">
+                <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur px-3 py-1.5">
                   <Stars count={5} />
-                  <span className="text-white/60 text-[11px] font-semibold uppercase tracking-widest">4.9+ rated</span>
+                  <span className="text-white/60 text-[10px] font-semibold uppercase tracking-wider">4.9+ rated</span>
                 </div>
-                <div className="inline-flex items-center gap-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur px-3.5 py-2">
-                  <span className="text-white font-black text-sm tabular-nums">2500+</span>
-                  <span className="text-white/60 text-[11px] font-semibold uppercase tracking-widest">members</span>
-                </div>
-                <div className="inline-flex items-center gap-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur px-3.5 py-2">
-                  <span className="text-white font-black text-sm tabular-nums">40+</span>
-                  <span className="text-white/60 text-[11px] font-semibold uppercase tracking-widest">classes/week</span>
+                <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur px-3 py-1.5">
+                  <span className="text-white font-black text-xs tabular-nums">2500+</span>
+                  <span className="text-white/60 text-[10px] font-semibold uppercase tracking-wider">members</span>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                <Link to="/contact" className="bg-yellow-400 text-black font-black uppercase text-xs tracking-widest px-6 py-3.5 rounded-lg hover:bg-yellow-300 hover:scale-[1.02] transition-all duration-200">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/contact" className="text-center bg-yellow-400 text-black font-black uppercase text-[11px] tracking-widest px-8 py-4 rounded-lg hover:bg-yellow-300 transition-all duration-200">
                   Book Free Trial
                 </Link>
-                <Link to="/pricing" className="border border-yellow-400 text-yellow-400 font-black uppercase text-xs tracking-widest px-6 py-3.5 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-200">
+                <Link to="/pricing" className="text-center border border-yellow-400 text-yellow-400 font-black uppercase text-[11px] tracking-widest px-8 py-4 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-200">
                   See Pricing
                 </Link>
               </div>
             </div>
 
-            {/* Foreground imagery (hero ke upar) */}
+            {/* Right side Images: Tablet/Mobile pe hide hi rakha hai kyunki space kam hoti hai */}
             <div className="lg:col-span-5 relative hidden lg:block">
               <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5">
                 <img
@@ -111,7 +111,6 @@ function Hero() {
     </section>
   );
 }
-
 // ── STATS BAR ─────────────────────────────────────────────────────────────────
 function StatsBar() {
   const stats = useMemo(

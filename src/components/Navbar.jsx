@@ -27,7 +27,22 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false); // Scroll state
   const location = useLocation();
+
+  // Scroll effect to track window position
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => setMenuOpen(false), [location]);
 
@@ -35,7 +50,13 @@ export default function Navbar() {
   const isAnyActive = (children) => children?.some((c) => isActive(c.to));
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950/95 backdrop-blur-md shadow-lg border-b border-white/10 transition-all duration-300">
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled 
+          ? "bg-gray-950/90 backdrop-blur-md border-b border-white/10 py-0 shadow-lg" 
+          : "bg-transparent border-b border-transparent py-2"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="font-black text-2xl tracking-widest text-yellow-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -96,12 +117,10 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-3">
-          {/* CTA */}
           <Link to="/contact" className="hidden lg:block bg-yellow-400 hover:bg-yellow-500 text-black text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5">
             Join Now
           </Link>
 
-          {/* Mobile burger */}
           <button 
             onClick={() => setMenuOpen(!menuOpen)} 
             className="lg:hidden text-gray-100 text-xl w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-800 transition-colors p-1"
@@ -114,7 +133,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-gray-950/95 backdrop-blur border-t border-white/10 px-6 py-6 flex flex-col gap-4">
+        <div className="lg:hidden bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-6 py-6 flex flex-col gap-4">
           {NAV_LINKS.map((item) => (
             <div key={item.label} className="flex flex-col gap-3 border-b border-gray-800 pb-3 last:border-b-0">
               {item.children ? (
