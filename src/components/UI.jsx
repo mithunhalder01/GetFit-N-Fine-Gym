@@ -180,7 +180,7 @@ export function AdminSidebar() {
 
       <aside
         className={[
-          "bg-gray-900/80 dark:bg-gray-950/70 backdrop-blur-xl border border-white/10 flex flex-col",
+          "bg-gray-950/80 backdrop-blur-xl border border-white/10 flex flex-col",
           "fixed left-0 top-0 z-50",
           "md:left-4 md:top-4 md:rounded-3xl md:shadow-2xl md:shadow-black/40",
           "h-screen md:h-[calc(100vh-2rem)]",
