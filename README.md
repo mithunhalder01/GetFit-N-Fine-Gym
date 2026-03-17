@@ -8,7 +8,8 @@ A complete, production-ready gym website with Admin Panel + WhatsApp Festival Se
 
 ```bash
 # 1. Go to project folder
-cd ironpeak-gym
+cd gym
+
 
 # 2. Install dependencies
 npm install
@@ -124,6 +125,20 @@ npm run build
 # Then drag the 'dist' folder to vercel.com
 # OR connect GitHub repo for auto-deploy
 ```
+
+---
+
+## 🚀 Deploy to GitHub Pages (Free)
+
+```bash
+npm i          # Install gh-pages
+npm run deploy # Builds + deploys to gh-pages branch
+```
+
+**Live URL:** https://mithunhalder01.github.io/GetFit-N-Fine-Gym/
+
+
+**Note:** Update `vite.config.js` base to '/YOUR_REPO_NAME/' if different.
 
 ---
 

@@ -54,7 +54,7 @@ function AdminLayout({ children, dark }) {
 }
 
 export default function App() {
-  const [dark, setDark] = useState(() => localStorage.getItem("gym_theme") === "dark");
+  const [dark, setDark] = useState(() => localStorage.getItem("gym_theme") !== "light");
 
   useEffect(() => {
     localStorage.setItem("gym_theme", dark ? "dark" : "light");

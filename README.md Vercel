@@ -1,0 +1,6 @@
+## Vercel Deploy (Recommended)
+
+1. vercel.com → Sign in → New Project → Import GitHub repo
+2. Framework: Vite
+3. Build: npm run build, Output: dist
+4. Deploy → https://getfit-n-gine-gym.vercel.app
