@@ -2,9 +2,9 @@
 export const GYM = {
   name: "Get Fit N Fine Gym",
   tagline: "Forge Your Legend",
-  website: "https://ironpeak.in",
+  website: "https://get-fit-n-fine-gym.in",
   phone: "+91 7303670724",
-  email: "hello@ironpeak.in",
+  email: "hello@get-fit-n-fine-gym.in",
   address: "Plot 47, Sector 18, Noida, UP — 201301",
   hours: { weekday: "5:00 AM – 11:00 PM", sunday: "7:00 AM – 8:00 PM" },
   instagram: "https://instagram.com/ironpeak",
