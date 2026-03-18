@@ -10,6 +10,7 @@ const NAV_LINKS = [
     label: "Programs",
     children: [
       { to: "/programs", label: "All Programs" },
+      { to: "/pricing", label: "Pricing" },
     ],
   },
   { to: "/trainers", label: "Trainers" },
@@ -26,37 +27,22 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false); // Scroll state
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const [brandFirst, ...brandRest] = GYM.name.split(" ");
   const brandRestText = brandRest.join(" ");
 
-  // Scroll effect to track window position
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => setMenuOpen(false), [location]);
-
   useEffect(() => {
-    if (!menuOpen) {
-      document.body.style.overflow = "";
-      return;
-    }
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
+    setMenuOpen(false);
+  }, [location]);
 
   const isActive = (to) => location.pathname === to;
   const isAnyActive = (children) => children?.some((c) => isActive(c.to));
@@ -64,9 +50,7 @@ export default function Navbar() {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        menuOpen
-          ? "bg-gray-950/95 backdrop-blur-xl border-b border-white/10 py-0 shadow-lg"
-          : scrolled 
+        scrolled || menuOpen
           ? "bg-gray-950/90 backdrop-blur-md border-b border-white/10 py-0 shadow-lg" 
           : "bg-transparent border-b border-transparent py-2"
       }`}
@@ -75,13 +59,13 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           to="/"
-          className="min-w-0 max-w-[calc(100%-3.25rem)] flex items-baseline gap-1 sm:gap-1.5 font-black text-yellow-400 leading-none"
+          className="min-w-0 flex items-baseline gap-1 sm:gap-1.5 font-black text-yellow-400 leading-none relative z-50"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
-          <span className="truncate text-lg sm:text-2xl tracking-[0.12em] sm:tracking-widest">
+          <span className="text-lg sm:text-2xl tracking-[0.12em] sm:tracking-widest">
             {brandFirst}
           </span>
-          <span className="truncate text-[11px] sm:text-xl text-gray-100 tracking-[0.08em] sm:tracking-normal">
+          <span className="text-[11px] sm:text-xl text-gray-100 tracking-[0.08em] sm:tracking-normal">
             {brandRestText}
           </span>
         </Link>
@@ -139,36 +123,42 @@ export default function Navbar() {
         </ul>
 
         {/* Right side */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          <Link to="/contact" className="hidden lg:block bg-yellow-400 hover:bg-yellow-500 text-black text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 relative z-50">
+          <Link to="/contact" className="hidden lg:block bg-yellow-400 hover:bg-yellow-500 text-black text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full shadow-lg transition-all duration-200">
             Join Now
           </Link>
 
           <button 
             onClick={() => setMenuOpen(!menuOpen)} 
-            className="lg:hidden text-gray-100 text-xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-800 transition-colors p-1"
+            className="lg:hidden text-gray-100 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-800 transition-colors"
             aria-label="Toggle menu"
           >
-            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-14 sm:top-16 bottom-0 z-[60] bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-4 py-4 flex overflow-y-auto flex-col gap-2">
+      {/* Mobile menu - Fixed alignment & Blur */}
+      <div 
+        className={`lg:hidden fixed inset-x-0 top-0 bg-gray-950/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300 ease-in-out overflow-y-auto ${
+          menuOpen ? "translate-y-0 opacity-100 visible max-h-screen" : "-translate-y-full opacity-0 invisible max-h-0"
+        }`}
+      >
+        <div className="flex flex-col gap-4 px-6 pt-20 pb-8">
           {NAV_LINKS.map((item) => (
-            <div key={item.label} className="flex flex-col gap-2 border-b border-gray-800/90 pb-2.5 last:border-b-0">
+            <div key={item.label} className="flex flex-col gap-3 border-b border-white/5 pb-4 last:border-b-0">
               {item.children ? (
                 <>
-                  <div className="text-[10px] uppercase tracking-[0.18em] font-bold text-gray-400 px-1">{item.label}</div>
-                  <div className="flex flex-col gap-1.5 pl-2">
+                  <div className="text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 px-1">
+                    {item.label}
+                  </div>
+                  <div className="flex flex-col gap-3 pl-4">
                     {item.children.map((c) => (
                       <Link
                         key={c.to}
                         to={c.to}
-                        className={`text-[14px] font-medium transition-colors py-2 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
-                          isActive(c.to) ? "bg-yellow-400/15 text-yellow-300 font-semibold" : ""
+                        className={`text-lg font-bold transition-colors ${
+                          isActive(c.to) ? "text-yellow-400" : "text-gray-200"
                         }`}
                         onClick={() => setMenuOpen(false)}
                       >
@@ -180,8 +170,8 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={item.to}
-                  className={`text-[15px] font-medium transition-colors py-2.5 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
-                    isActive(item.to) ? "bg-yellow-400/15 text-yellow-300 font-semibold" : ""
+                  className={`text-xl font-black uppercase tracking-tight transition-colors ${
+                    isActive(item.to) ? "text-yellow-400" : "text-white"
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
@@ -190,13 +180,17 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <div className="pt-3 mt-1 border-t border-white/10">
-            <Link to="/contact" className="bg-yellow-400 hover:bg-yellow-500 text-black text-[12px] font-black uppercase tracking-[0.2em] px-5 py-3 rounded-full shadow-lg transition-all duration-200 hover:shadow-xl text-center block">
+          <div className="pt-4">
+            <Link 
+              to="/contact" 
+              onClick={() => setMenuOpen(false)}
+              className="bg-yellow-400 text-black text-sm font-black uppercase tracking-widest py-4 rounded-xl text-center block shadow-lg active:scale-95 transition-transform"
+            >
               Join Now
             </Link>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
