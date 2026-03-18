@@ -24,18 +24,18 @@ function Hero() {
       {/* Big number */}
       <span className="absolute right-4 top-1/2 -translate-y-1/2 font-black text-yellow-400/[0.03] leading-none select-none pointer-events-none hidden xl:block" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "18vw" }}>99</span>
 
-      <div className="relative z-10 max-w-7xl mt-4 sm:mt-10 mx-auto px-4 sm:px-6 pt-20 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 lg:pb-12 w-full">
+      <div className="relative z-10 max-w-7xl mt-4 sm:mt-10 mx-auto px-4 sm:px-6 pt-16 max-[380px]:pt-14 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 lg:pb-12 w-full">
         <FadeIn>
           <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-block bg-yellow-400 text-black text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] sm:tracking-[0.28em] px-3 sm:px-4 py-1.5 mb-5">Est. 2019 · Noida, UP</div>
+              <div className="inline-block bg-yellow-400 text-black text-[9px] max-[380px]:text-[8px] sm:text-[11px] font-black uppercase tracking-[0.18em] sm:tracking-[0.28em] px-3 sm:px-4 py-1.5 mb-5">Est. 2019 · Noida, UP</div>
               
               {/* Responsive Heading: Mobile pe text chota, Desktop pe 85px */}
-              <h1 className="font-black text-white mb-4 leading-[0.95] text-[clamp(2.15rem,10vw,4.75rem)] sm:text-6xl lg:text-[85px]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <h1 className="font-black text-white mb-4 leading-[0.95] text-[clamp(2.05rem,9.8vw,4.75rem)] max-[380px]:text-[1.95rem] sm:text-6xl lg:text-[85px]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 FORGE YOUR<br /><span className="text-yellow-400">LEGEND</span>
               </h1>
               
-              <p className="text-white/70 text-[14px] sm:text-base max-w-xl leading-relaxed mb-6 font-light">
+              <p className="text-white/70 text-[14px] max-[380px]:text-[13px] sm:text-base max-w-xl leading-relaxed max-[380px]:leading-[1.55] mb-6 font-light">
                 A modern performance gym built for real results. Train smarter with elite coaching, high-end equipment, and a community that keeps you consistent.
               </p>
 
@@ -46,7 +46,7 @@ function Hero() {
                   "Strength, HIIT, & Boxing",
                   "Progress tracking",
                 ].map((t) => (
-                  <div key={t} className="flex items-start gap-2.5 text-white/65 text-[12px] sm:text-[13px] leading-relaxed">
+                  <div key={t} className="flex items-start gap-2.5 text-white/65 text-[12px] max-[380px]:text-[11px] sm:text-[13px] leading-relaxed">
                     <span className="mt-0.5 w-5 h-5 rounded-lg bg-yellow-400/15 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
                       <Check className="w-3.5 h-3.5 text-yellow-300" />
                     </span>
@@ -59,11 +59,11 @@ function Hero() {
               <div className="flex flex-wrap items-center gap-2 mb-8">
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur px-3 py-1.5">
                   <Stars count={5} />
-                  <span className="text-white/60 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider">4.9+ rated</span>
+                  <span className="text-white/60 text-[9px] max-[380px]:text-[8px] sm:text-[10px] font-semibold uppercase tracking-wider">4.9+ rated</span>
                 </div>
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur px-3 py-1.5">
                   <span className="text-white font-black text-xs tabular-nums">2500+</span>
-                  <span className="text-white/60 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider">members</span>
+                  <span className="text-white/60 text-[9px] max-[380px]:text-[8px] sm:text-[10px] font-semibold uppercase tracking-wider">members</span>
                 </div>
               </div>
 
