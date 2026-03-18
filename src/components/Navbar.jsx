@@ -10,7 +10,6 @@ const NAV_LINKS = [
     label: "Programs",
     children: [
       { to: "/programs", label: "All Programs" },
-      { to: "/pricing", label: "Pricing" },
     ],
   },
   { to: "/trainers", label: "Trainers" },
@@ -48,13 +47,26 @@ export default function Navbar() {
 
   useEffect(() => setMenuOpen(false), [location]);
 
+  useEffect(() => {
+    if (!menuOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const isActive = (to) => location.pathname === to;
   const isAnyActive = (children) => children?.some((c) => isActive(c.to));
 
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
+        menuOpen
+          ? "bg-gray-950/95 backdrop-blur-xl border-b border-white/10 py-0 shadow-lg"
+          : scrolled 
           ? "bg-gray-950/90 backdrop-blur-md border-b border-white/10 py-0 shadow-lg" 
           : "bg-transparent border-b border-transparent py-2"
       }`}
@@ -144,19 +156,19 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-4 sm:px-6 py-5 sm:py-6 flex max-h-[calc(100svh-3.5rem)] overflow-y-auto flex-col gap-4">
+        <div className="lg:hidden fixed inset-x-0 top-14 sm:top-16 bottom-0 z-[60] bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-4 py-4 flex overflow-y-auto flex-col gap-2">
           {NAV_LINKS.map((item) => (
-            <div key={item.label} className="flex flex-col gap-3 border-b border-gray-800 pb-3 last:border-b-0">
+            <div key={item.label} className="flex flex-col gap-2 border-b border-gray-800/90 pb-2.5 last:border-b-0">
               {item.children ? (
                 <>
-                  <div className="text-xs uppercase tracking-widest font-bold text-gray-400 px-1">{item.label}</div>
-                  <div className="flex flex-col gap-2 pl-3">
+                  <div className="text-[10px] uppercase tracking-[0.18em] font-bold text-gray-400 px-1">{item.label}</div>
+                  <div className="flex flex-col gap-1.5 pl-2">
                     {item.children.map((c) => (
                       <Link
                         key={c.to}
                         to={c.to}
-                        className={`text-base font-medium transition-colors py-2 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
-                          isActive(c.to) ? "bg-yellow-400/20 text-yellow-500 font-bold" : ""
+                        className={`text-[14px] font-medium transition-colors py-2 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
+                          isActive(c.to) ? "bg-yellow-400/15 text-yellow-300 font-semibold" : ""
                         }`}
                         onClick={() => setMenuOpen(false)}
                       >
@@ -168,8 +180,8 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={item.to}
-                  className={`text-base font-medium transition-colors py-3 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
-                    isActive(item.to) ? "bg-yellow-400/20 text-yellow-400 font-bold" : ""
+                  className={`text-[15px] font-medium transition-colors py-2.5 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
+                    isActive(item.to) ? "bg-yellow-400/15 text-yellow-300 font-semibold" : ""
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
@@ -178,8 +190,8 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <div className="pt-4 mt-2 border-t border-white/10">
-            <Link to="/contact" className="bg-yellow-400 hover:bg-yellow-500 text-black text-sm font-black uppercase tracking-widest px-6 py-3 rounded-full shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 text-center block">
+          <div className="pt-3 mt-1 border-t border-white/10">
+            <Link to="/contact" className="bg-yellow-400 hover:bg-yellow-500 text-black text-[12px] font-black uppercase tracking-[0.2em] px-5 py-3 rounded-full shadow-lg transition-all duration-200 hover:shadow-xl text-center block">
               Join Now
             </Link>
           </div>
