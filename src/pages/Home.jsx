@@ -8,7 +8,7 @@ import { Check, ChevronRight } from "lucide-react";
 // ── HERO ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative min-h-[100svh] sm:min-h-[78svh] lg:min-h-[88vh] flex items-center bg-black overflow-hidden">
+    <section className="relative min-h-[70svh] sm:min-h-[72vh] lg:min-h-[88vh] flex items-center bg-black overflow-hidden">
       {/* Image */}
       <img
         src={IMAGES.hero}
@@ -24,63 +24,56 @@ function Hero() {
       {/* Big number */}
       <span className="absolute right-4 top-1/2 -translate-y-1/2 font-black text-yellow-400/[0.03] leading-none select-none pointer-events-none hidden xl:block" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "18vw" }}>99</span>
 
-      <div className="relative z-10 max-w-7xl mt-4 sm:mt-10 mx-auto px-4 sm:px-6 pt-24 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 lg:pb-12 w-full">
-        <FadeIn className="w-full">
+      <div className="relative z-10 max-w-7xl mt-4 sm:mt-10 mx-auto px-4 sm:px-6 pt-16 sm:pt-20 lg:pt-24 pb-6 sm:pb-8 lg:pb-12 w-full">
+        <FadeIn>
           <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 items-center">
             <div className="lg:col-span-7">
-              <div className="mx-auto max-w-md lg:max-w-none lg:mx-0 rounded-[30px] border border-white/10 bg-black/55 px-5 py-6 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-[2px] sm:px-6 sm:py-7 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-0">
-                <div className="inline-block bg-yellow-400 text-black text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] sm:tracking-[0.28em] px-3 sm:px-4 py-1.5 mb-4 sm:mb-5">Est. 2019 · Noida, UP</div>
+              <div className="inline-block bg-yellow-400 text-black text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] sm:tracking-[0.28em] px-3 sm:px-4 py-1.5 mb-5">Est. 2019 · Noida, UP</div>
+              
+              {/* Responsive Heading: Mobile pe text chota, Desktop pe 85px */}
+              <h1 className="font-black text-white mb-4 leading-[0.95] text-[clamp(2.7rem,12vw,4.75rem)] sm:text-6xl lg:text-[85px]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                FORGE YOUR<br /><span className="text-yellow-400">LEGEND</span>
+              </h1>
+              
+              <p className="text-white/70 text-[15px] sm:text-base max-w-xl leading-relaxed mb-6 font-light">
+                A modern performance gym built for real results. Train smarter with elite coaching, high-end equipment, and a community that keeps you consistent.
+              </p>
 
-                <h1 className="font-black text-white mb-4 leading-[0.92] text-[clamp(2.5rem,13vw,4.75rem)] sm:text-6xl lg:text-[85px]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  FORGE YOUR<br /><span className="text-yellow-400">LEGEND</span>
-                </h1>
-
-                <p
-                  className="text-white/72 text-[15px] sm:text-base max-w-[20rem] sm:max-w-xl leading-7 sm:leading-relaxed mb-5 sm:mb-6 font-light"
-                  style={{ textWrap: "pretty" }}
-                >
-                  A modern performance gym built for real results. Train smarter with elite coaching, high-end equipment, and a community that keeps you consistent.
-                </p>
-
-                <div className="grid grid-cols-1 min-[390px]:grid-cols-2 gap-2.5 mb-6 max-w-xl">
-                  {[
-                    "Goal-based training plans",
-                    "Certified coaches + form-first",
-                    "Strength, HIIT, & Boxing",
-                    "Progress tracking",
-                  ].map((t) => (
-                    <div key={t} className="flex items-start gap-2.5 rounded-2xl border border-white/8 bg-white/[0.04] px-3 py-2.5 text-white/70 text-[12px] sm:text-[13px] leading-relaxed">
-                      <span className="mt-0.5 w-5 h-5 rounded-lg bg-yellow-400/15 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3.5 h-3.5 text-yellow-300" />
-                      </span>
-                      <span>{t}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-1 min-[390px]:grid-cols-2 gap-2 mb-6 max-w-xl">
-                  <div className="inline-flex items-center justify-center min-[390px]:justify-start gap-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur px-3 py-2">
-                    <Stars count={5} />
-                    <span className="text-white/60 text-[10px] font-semibold uppercase tracking-[0.18em]">4.9+ rated</span>
+              <div className="grid sm:grid-cols-2 gap-3 mb-6 max-w-xl">
+                {[
+                  "Goal-based training plans",
+                  "Certified coaches + form-first",
+                  "Strength, HIIT, & Boxing",
+                  "Progress tracking",
+                ].map((t) => (
+                  <div key={t} className="flex items-start gap-2 text-white/65 text-sm sm:text-[13px] leading-relaxed">
+                    <span className="mt-0.5 w-5 h-5 rounded-lg bg-yellow-400/15 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3.5 h-3.5 text-yellow-300" />
+                    </span>
+                    <span>{t}</span>
                   </div>
-                  <div className="inline-flex items-center justify-center min-[390px]:justify-start gap-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur px-3 py-2">
-                    <span className="text-white font-black text-xs tabular-nums">2500+</span>
-                    <span className="text-white/60 text-[10px] font-semibold uppercase tracking-[0.18em]">members</span>
-                  </div>
-                </div>
+                ))}
+              </div>
 
-                <div className="grid grid-cols-1 min-[390px]:grid-cols-2 gap-3 sm:flex sm:flex-row max-w-xl">
-                  <Link to="/contact" className="w-full text-center bg-yellow-400 text-black font-black uppercase text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-widest px-4 sm:px-8 py-4 rounded-lg hover:bg-yellow-300 transition-all duration-200">
-                    Book Free Trial
-                  </Link>
-                  <Link to="/pricing" className="w-full text-center border border-yellow-400 text-yellow-400 font-black uppercase text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-widest px-4 sm:px-8 py-4 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-200">
-                    See Pricing
-                  </Link>
+              {/* Stats: Mobile pe wrapping achhi dikhegi */}
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-8">
+                <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur px-3 py-1.5">
+                  <Stars count={5} />
+                  <span className="text-white/60 text-[10px] font-semibold uppercase tracking-wider">4.9+ rated</span>
                 </div>
+                <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur px-3 py-1.5">
+                  <span className="text-white font-black text-xs tabular-nums">2500+</span>
+                  <span className="text-white/60 text-[10px] font-semibold uppercase tracking-wider">members</span>
+                </div>
+              </div>
 
-                <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-white/35">
-                  No joining fee • Free assessment
-                </p>
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+                <Link to="/contact" className="w-full sm:w-auto text-center bg-yellow-400 text-black font-black uppercase text-[11px] tracking-widest px-6 sm:px-8 py-4 rounded-lg hover:bg-yellow-300 transition-all duration-200">
+                  Book Free Trial
+                </Link>
+                <Link to="/pricing" className="w-full sm:w-auto text-center border border-yellow-400 text-yellow-400 font-black uppercase text-[11px] tracking-widest px-6 sm:px-8 py-4 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-200">
+                  See Pricing
+                </Link>
               </div>
             </div>
 
@@ -163,14 +156,7 @@ function StatsBar() {
   return (
     <div className="bg-yellow-400 grid grid-cols-2 md:grid-cols-4">
       {stats.map((s, i) => (
-        <div
-          key={i}
-          className={`text-center py-4 sm:py-5 px-3 sm:px-4 ${
-            i % 2 === 0 ? "border-r border-black/10" : ""
-          } ${i < 2 ? "border-b border-black/10 md:border-b-0" : ""} ${
-            i < stats.length - 1 ? "md:border-r md:border-black/10" : ""
-          }`}
-        >
+        <div key={i} className="text-center py-4 sm:py-5 px-3 sm:px-4 border-r border-black/10 last:border-0">
           <div className="text-3xl sm:text-4xl font-black text-black tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {shown[i].toLocaleString()}
             {s.suffix}
@@ -185,7 +171,7 @@ function StatsBar() {
 // ── PROGRAMS PREVIEW ──────────────────────────────────────────────────────────
 function ProgramsPreview() {
   return (
-    <section className="bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
+    <section className="bg-black py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
@@ -235,7 +221,7 @@ function Transformations() {
   ];
 
   return (
-    <section className="bg-black py-16 sm:py-20 px-4 sm:px-6">
+    <section className="bg-black py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
@@ -255,7 +241,7 @@ function Transformations() {
               <Link to="/contact" className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 group block">
                 <img src={c.image} alt={c.title} className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 transition-opacity" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
-                <div className="relative p-6 sm:p-8 min-h-[220px] sm:min-h-[260px] flex flex-col justify-end">
+                <div className="relative p-6 sm:p-8 min-h-[260px] flex flex-col justify-end">
                   <div className="inline-block bg-yellow-400 text-black text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-full w-fit mb-4">
                     {c.tag}
                   </div>
@@ -281,7 +267,7 @@ function Transformations() {
 // ── TRAINERS PREVIEW ──────────────────────────────────────────────────────────
 function TrainersPreview() {
   return (
-    <section className="bg-[#0d0d0d] py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
+    <section className="bg-[#0d0d0d] py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
@@ -340,7 +326,7 @@ function PricingPreview() {
   const topFeatures = (p) => (p.features || []).slice(0, 4);
 
   return (
-    <section className="bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
+    <section className="bg-black py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
@@ -358,7 +344,7 @@ function PricingPreview() {
           {PLANS.map((p, i) => (
             <FadeIn key={p.name} delay={i * 80}>
               <div className={`relative rounded-3xl border h-full p-6 sm:p-8 ${p.featured ? "bg-[#111] border-yellow-400/25" : "bg-[#0a0a0a] border-white/5"}`}>
-                {p.featured && <span className="absolute -top-px right-4 sm:right-8 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-b">Most Popular</span>}
+                {p.featured && <span className="absolute -top-px right-8 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-b">Most Popular</span>}
                 <div className={`text-xs font-bold uppercase tracking-[0.3em] mb-2 ${p.featured ? "text-yellow-400" : "text-white/30"}`}>{p.name}</div>
                 <div className="text-4xl sm:text-5xl font-black text-white leading-none mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>₹{p.price.toLocaleString()}</div>
                 <p className="text-white/30 text-sm mb-6">/month</p>
@@ -387,7 +373,7 @@ function PricingPreview() {
 // ── CTA BANNER ────────────────────────────────────────────────────────────────
 function CTABanner() {
   return (
-    <section className="bg-yellow-400 py-16 sm:py-20 px-4 sm:px-6">
+    <section className="bg-yellow-400 py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="font-black text-black mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(34px, 9vw, 80px)" }}>
           READY TO START YOUR JOURNEY?

@@ -29,9 +29,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false); // Scroll state
   const location = useLocation();
-  const brandWords = GYM.name.split(" ");
-  const brandPrimary = brandWords.slice(0, 2).join(" ");
-  const brandSecondary = brandWords.slice(2).join(" ");
+  const [brandFirst, ...brandRest] = GYM.name.split(" ");
+  const brandRestText = brandRest.join(" ");
 
   // Scroll effect to track window position
   useEffect(() => {
@@ -57,23 +56,21 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled 
           ? "bg-gray-950/90 backdrop-blur-md border-b border-white/10 py-0 shadow-lg" 
-          : "bg-black/35 backdrop-blur-[3px] border-b border-white/5 py-2 sm:bg-transparent sm:backdrop-blur-0 sm:border-transparent"
+          : "bg-transparent border-b border-transparent py-2"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
         {/* Logo */}
         <Link
           to="/"
-          className="min-w-0 max-w-[calc(100%-3.25rem)] leading-none"
+          className="min-w-0 max-w-[calc(100%-3.25rem)] flex items-baseline gap-1 sm:gap-1.5 font-black text-yellow-400 leading-none"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
-          <span className="flex min-w-0 flex-col sm:flex-row sm:items-baseline sm:gap-1.5">
-            <span className="truncate text-[1.02rem] sm:text-2xl font-black tracking-[0.12em] sm:tracking-widest text-yellow-400">
-              {brandPrimary}
-            </span>
-            <span className="truncate text-[10px] sm:text-xl font-semibold uppercase sm:normal-case tracking-[0.18em] sm:tracking-normal text-gray-100/85">
-              {brandSecondary}
-            </span>
+          <span className="truncate text-lg sm:text-2xl tracking-[0.12em] sm:tracking-widest">
+            {brandFirst}
+          </span>
+          <span className="truncate text-[11px] sm:text-xl text-gray-100 tracking-[0.08em] sm:tracking-normal">
+            {brandRestText}
           </span>
         </Link>
 
@@ -147,18 +144,18 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-4 sm:px-6 py-5 sm:py-6 flex max-h-[calc(100svh-3.5rem)] overflow-y-auto flex-col gap-4">
+        <div className="lg:hidden bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-4 sm:px-6 py-3 sm:py-4 flex max-h-[85svh] overflow-y-auto flex-col gap-3">
           {NAV_LINKS.map((item) => (
             <div key={item.label} className="flex flex-col gap-3 border-b border-gray-800 pb-3 last:border-b-0">
               {item.children ? (
                 <>
                   <div className="text-xs uppercase tracking-widest font-bold text-gray-400 px-1">{item.label}</div>
-                  <div className="flex flex-col gap-2 pl-3">
+                  <div className="flex flex-col gap-2 pl-3 sm:gap-1.5">
                     {item.children.map((c) => (
                       <Link
                         key={c.to}
                         to={c.to}
-                        className={`text-base font-medium transition-colors py-2 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
+                        className={`text-base font-medium transition-colors py-2.5 px-4 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
                           isActive(c.to) ? "bg-yellow-400/20 text-yellow-500 font-bold" : ""
                         }`}
                         onClick={() => setMenuOpen(false)}
@@ -171,7 +168,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={item.to}
-                  className={`text-base font-medium transition-colors py-3 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
+                  className={`text-base font-medium transition-colors py-2.5 px-4 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
                     isActive(item.to) ? "bg-yellow-400/20 text-yellow-400 font-bold" : ""
                   }`}
                   onClick={() => setMenuOpen(false)}
