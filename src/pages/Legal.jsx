@@ -6,10 +6,10 @@ function LegalShell({ title, subtitle, children }) {
   return (
     <>
       <PageHero tag={GYM.name} title={title} highlight="" subtitle={subtitle} />
-      <section className="bg-black py-16 px-6">
+      <section className="bg-black py-16 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 md:p-10">
-            <div className="prose prose-invert max-w-none">
+          <div className="bg-[#0a0a0a] border border-white/5 rounded-3xl p-5 sm:p-8 md:p-10">
+            <div className="prose prose-invert prose-sm sm:prose-base max-w-none">
               {children}
             </div>
           </div>
@@ -102,4 +102,3 @@ export function RefundPolicy() {
     </LegalShell>
   );
 }
-

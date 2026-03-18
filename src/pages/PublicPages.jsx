@@ -1,7 +1,7 @@
 // ── PROGRAMS PAGE ─────────────────────────────────────────────────────────────
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { IMAGES, PROGRAMS, SCHEDULE, TRAINERS, PLANS, BLOGS, GYM, whatsappLink } from "../data";
+import { IMAGES, PROGRAMS, SCHEDULE, TRAINERS, PLANS, BLOGS, GYM } from "../data";
 import { PageHero, FadeIn, BMICalculator, Stars } from "../components/UI";
 import { BlogCategoryIcon, FacilityIcon, ProgramIcon } from "../components/Icons";
 import { Check, ChevronRight, MessageCircle, Plus, X } from "lucide-react";
@@ -15,16 +15,16 @@ export function Programs() {
   return (
     <>
       <PageHero tag="What We Offer" title="OUR" highlight="PROGRAMS" subtitle="8 world-class training programs designed for all levels — beginner to elite." />
-      <section className="bg-black py-20 px-6">
+      <section className="bg-black py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1a1a]">
             {PROGRAMS.map((p, i) => (
               <FadeIn key={p.id} delay={i * 60}>
-                <Link to="/contact" className="bg-[#0a0a0a] p-8 group hover:bg-[#111] transition-colors h-full block">
+                <Link to="/contact" className="bg-[#0a0a0a] p-6 sm:p-8 group hover:bg-[#111] transition-colors h-full block">
                   <div className="text-yellow-400 mb-5 group-hover:scale-110 transition-transform duration-300 origin-left">
                     <ProgramIcon name={p.icon} className="w-9 h-9" />
                   </div>
-                  <h3 className="text-3xl font-black text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{p.title}</h3>
+                  <h3 className="text-2xl sm:text-3xl font-black text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{p.title}</h3>
                   <p className="text-white/40 text-sm leading-relaxed mb-5">{p.desc}</p>
                   <div className="space-y-1.5 mb-5">
                     <p className="text-xs text-white/30"><span className="text-white/50">Duration:</span> {p.duration}</p>
@@ -39,7 +39,7 @@ export function Programs() {
       </section>
 
       {/* Schedule */}
-      <section className="bg-[#0d0d0d] py-20 px-6">
+      <section className="bg-[#0d0d0d] py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">Weekly Timetable</p>
           <h2 className="font-black leading-[0.9] text-white mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(36px,9vw,80px)" }}>
@@ -50,7 +50,35 @@ export function Programs() {
               <button key={d} onClick={() => setDay(d)} className={`px-4 py-2 text-xs font-bold uppercase tracking-widest rounded transition-all ${d === day ? "bg-yellow-400 text-black" : "border border-white/10 text-white/40 hover:border-yellow-400/50 hover:text-white/70"}`}>{d}</button>
             ))}
           </div>
-          <div className="overflow-x-auto">
+          <div className="space-y-3 md:hidden">
+            {filtered.map((s, i) => (
+              <div key={i} className="rounded-2xl border border-white/10 bg-[#0a0a0a] p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-yellow-400 text-[11px] font-black uppercase tracking-[0.22em]">{s.time}</p>
+                    <h3 className="mt-2 text-white text-lg font-semibold">{s.name}</h3>
+                  </div>
+                  <span className={`text-[10px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 rounded-full whitespace-nowrap ${levelColor[s.level] || "bg-white/10 text-white/40"}`}>
+                    {s.level}
+                  </span>
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+                  <div className="rounded-xl bg-white/[0.03] border border-white/5 px-3 py-2">
+                    <p className="text-white/30 text-[10px] uppercase tracking-[0.18em] mb-1">Trainer</p>
+                    <p className="text-white/70">{s.trainer}</p>
+                  </div>
+                  <div className="rounded-xl bg-white/[0.03] border border-white/5 px-3 py-2">
+                    <p className="text-white/30 text-[10px] uppercase tracking-[0.18em] mb-1">Duration</p>
+                    <p className="text-white/70">{s.duration}</p>
+                  </div>
+                </div>
+                <p className="mt-3 text-white/35 text-[11px] uppercase tracking-[0.18em]">
+                  Days: {s.days.join(" • ")}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full min-w-[600px]">
               <thead><tr className="border-b border-white/10">{["Time", "Class", "Trainer", "Duration", "Days", "Level"].map(h => <th key={h} className="text-left py-3 px-4 text-yellow-400 text-xs uppercase tracking-widest font-bold">{h}</th>)}</tr></thead>
               <tbody>
@@ -71,7 +99,7 @@ export function Programs() {
       </section>
 
       {/* BMI */}
-      <section className="bg-black py-20 px-6">
+      <section className="bg-black py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto"><BMICalculator /></div>
       </section>
     </>
@@ -83,15 +111,15 @@ export function Trainers() {
   return (
     <>
       <PageHero tag="Expert Coaching" title="MEET THE" highlight="TEAM" subtitle="Certified professionals dedicated to your transformation. Every trainer is handpicked for expertise, passion, and results." />
-      <section className="bg-black py-20 px-6">
+      <section className="bg-black py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
           {TRAINERS.map((t, i) => (
             <FadeIn key={t.id} delay={i * 80}>
-              <div className="bg-[#0a0a0a] p-9 group hover:bg-[#111] transition-colors h-full">
+              <div className="bg-[#0a0a0a] p-6 sm:p-9 group hover:bg-[#111] transition-colors h-full">
                 <div className="w-20 h-20 rounded-full mb-5 overflow-hidden border border-white/10">
                   <img src={t.image} alt={t.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 </div>
-                <h3 className="text-3xl font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{t.name}</h3>
+                <h3 className="text-2xl sm:text-3xl font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{t.name}</h3>
                 <p className="text-yellow-400 text-xs uppercase tracking-widest font-bold mt-1 mb-3">{t.role}</p>
                 <p className="text-white/40 text-sm leading-relaxed mb-5">{t.bio}</p>
                 <div className="flex flex-wrap gap-2 mb-5">
@@ -128,10 +156,10 @@ export function Pricing() {
     <>
       <PageHero tag="Membership" title="SIMPLE" highlight="PRICING" subtitle="No hidden fees. No lock-ins. Just results. Choose the plan that fits your goals." />
 
-      <section className="bg-black py-20 px-6">
+      <section className="bg-black py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Toggle */}
-          <div className="flex items-center justify-center gap-4 mb-14">
+          <div className="flex flex-col min-[420px]:flex-row items-center justify-center gap-3 min-[420px]:gap-4 mb-10 sm:mb-14 text-center">
             <span className={`text-sm font-bold uppercase tracking-widest ${!annual ? "text-yellow-400" : "text-white/30"}`}>Monthly</span>
             <button onClick={() => setAnnual(!annual)} className={`w-14 h-7 rounded-full transition-colors duration-300 relative ${annual ? "bg-yellow-400" : "bg-white/10"}`}>
               <div className={`w-5 h-5 bg-white rounded-full absolute top-1 transition-all duration-300 ${annual ? "left-8" : "left-1"}`} />
@@ -142,8 +170,8 @@ export function Pricing() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1a1a1a]">
             {PLANS.map((p, i) => (
               <FadeIn key={p.name} delay={i * 100}>
-                <div className={`relative flex flex-col p-10 h-full ${p.featured ? "bg-[#111] border-t-2 border-yellow-400" : "bg-[#0a0a0a]"}`}>
-                  {p.featured && <span className="absolute -top-px right-8 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1">Most Popular</span>}
+                <div className={`relative flex flex-col p-6 sm:p-10 h-full ${p.featured ? "bg-[#111] border-t-2 border-yellow-400" : "bg-[#0a0a0a]"}`}>
+                  {p.featured && <span className="absolute -top-px right-4 sm:right-8 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1">Most Popular</span>}
                   <div className={`text-xs font-bold uppercase tracking-[0.3em] mb-2 ${p.featured ? "text-yellow-400" : "text-white/30"}`}>{p.name}</div>
                   <div className="text-4xl sm:text-5xl font-black text-white leading-none mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>₹{price(p.price).toLocaleString()}</div>
                   <p className="text-white/30 text-sm mb-8">/{annual ? "year" : "month"}</p>
@@ -170,7 +198,7 @@ export function Pricing() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#0d0d0d] py-20 px-6">
+      <section className="bg-[#0d0d0d] py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3 text-center">Got Questions?</p>
           <h2 className="font-black text-white text-center mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(34px,9vw,64px)" }}>
@@ -191,13 +219,13 @@ function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border border-white/10 rounded-xl overflow-hidden">
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-6 py-4 text-left group hover:bg-white/[0.02] transition-colors">
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-4 sm:px-6 py-4 text-left group hover:bg-white/[0.02] transition-colors">
         <span className="text-white font-medium text-sm pr-4">{q}</span>
         <span className={`text-yellow-400 transition-transform duration-200 flex-shrink-0 ${open ? "rotate-45" : ""}`}>
           <Plus className="w-4 h-4" />
         </span>
       </button>
-      {open && <div className="px-6 pb-5 text-white/50 text-sm leading-relaxed border-t border-white/5 pt-4">{a}</div>}
+      {open && <div className="px-4 sm:px-6 pb-5 text-white/50 text-sm leading-relaxed border-t border-white/5 pt-4">{a}</div>}
     </div>
   );
 }
@@ -218,22 +246,22 @@ export function Gallery() {
   return (
     <>
       <PageHero tag={`Inside ${GYM.name}`} title="PHOTO" highlight="GALLERY" subtitle="Get a look at the facilities, equipment, and atmosphere that makes our gym different." />
-      <section className="bg-black py-20 px-6">
+      <section className="bg-black py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[160px] md:auto-rows-[200px]">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[220px] min-[420px]:auto-rows-[170px] md:auto-rows-[200px]">
             {items.map((item, i) => (
               <FadeIn key={i} delay={i * 60}>
                 {(() => {
                   const spans = [
-                    "col-span-2 row-span-2 md:col-span-2 md:row-span-2", // Main Floor
-                    "col-span-1 row-span-2 md:col-span-1 md:row-span-2", // Cardio (tall)
-                    "col-span-1 row-span-1 md:col-span-1 md:row-span-1", // CrossFit
-                    "col-span-2 row-span-1 md:col-span-2 md:row-span-2", // Yoga (feature)
-                    "col-span-1 row-span-1 md:col-span-1 md:row-span-1", // Boxing
-                    "col-span-1 row-span-1 md:col-span-1 md:row-span-1", // Locker
-                    "col-span-2 row-span-1 md:col-span-2 md:row-span-1", // Recovery (wide)
-                    "col-span-1 row-span-1 md:col-span-1 md:row-span-1", // Juice
-                    "col-span-1 row-span-1 md:col-span-1 md:row-span-1", // Wall
+                    "col-span-1 row-span-1 min-[420px]:col-span-2 min-[420px]:row-span-2 md:col-span-2 md:row-span-2",
+                    "col-span-1 row-span-1 min-[420px]:col-span-1 min-[420px]:row-span-2 md:col-span-1 md:row-span-2",
+                    "col-span-1 row-span-1 min-[420px]:col-span-1 min-[420px]:row-span-1 md:col-span-1 md:row-span-1",
+                    "col-span-1 row-span-1 min-[420px]:col-span-2 min-[420px]:row-span-1 md:col-span-2 md:row-span-2",
+                    "col-span-1 row-span-1 min-[420px]:col-span-1 min-[420px]:row-span-1 md:col-span-1 md:row-span-1",
+                    "col-span-1 row-span-1 min-[420px]:col-span-1 min-[420px]:row-span-1 md:col-span-1 md:row-span-1",
+                    "col-span-1 row-span-1 min-[420px]:col-span-2 min-[420px]:row-span-1 md:col-span-2 md:row-span-1",
+                    "col-span-1 row-span-1 min-[420px]:col-span-1 min-[420px]:row-span-1 md:col-span-1 md:row-span-1",
+                    "col-span-1 row-span-1 min-[420px]:col-span-1 min-[420px]:row-span-1 md:col-span-1 md:row-span-1",
                   ];
 
                   return (
@@ -279,7 +307,7 @@ export function Blog() {
   return (
     <>
       <PageHero tag="Knowledge Hub" title="FITNESS" highlight="BLOG" subtitle="Expert tips, training guides, and nutrition advice from our certified coaches." />
-      <section className="bg-black py-20 px-6">
+      <section className="bg-black py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {BLOGS.map((b, i) => (
             <FadeIn key={b.id} delay={i * 80}>
@@ -331,11 +359,11 @@ export function Contact() {
   return (
     <>
       <PageHero tag="Get Started" title="JOIN" highlight="TODAY" subtitle="Your first session is FREE. Fill in your details and we'll get back to you within 2 hours." />
-      <section className="bg-black py-20 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+      <section className="bg-black py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 lg:gap-16">
           {/* Info */}
           <FadeIn>
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {[
                 { label: "Address", val: GYM.address },
                 { label: "Hours (Mon–Sat)", val: GYM.hours.weekday },
@@ -361,8 +389,8 @@ export function Contact() {
 
           {/* Form */}
           <FadeIn delay={200}>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <h3 className="text-3xl font-black text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>BOOK A FREE TRIAL</h3>
+            <form onSubmit={handleSubmit} className="space-y-4 rounded-3xl border border-white/10 bg-[#0a0a0a] p-5 sm:p-8">
+              <h3 className="text-2xl sm:text-3xl font-black text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>BOOK A FREE TRIAL</h3>
               {[{ k: "name", label: "Full Name *", type: "text" }, { k: "email", label: "Email Address", type: "email" }, { k: "phone", label: "WhatsApp Number *", type: "tel" }].map(({ k, label, type }) => (
                 <div key={k}>
                   <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">{label}</label>

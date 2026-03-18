@@ -29,8 +29,9 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false); // Scroll state
   const location = useLocation();
-  const [brandFirst, ...brandRest] = GYM.name.split(" ");
-  const brandRestText = brandRest.join(" ");
+  const brandWords = GYM.name.split(" ");
+  const brandPrimary = brandWords.slice(0, 2).join(" ");
+  const brandSecondary = brandWords.slice(2).join(" ");
 
   // Scroll effect to track window position
   useEffect(() => {
@@ -56,21 +57,23 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled 
           ? "bg-gray-950/90 backdrop-blur-md border-b border-white/10 py-0 shadow-lg" 
-          : "bg-transparent border-b border-transparent py-2"
+          : "bg-black/35 backdrop-blur-[3px] border-b border-white/5 py-2 sm:bg-transparent sm:backdrop-blur-0 sm:border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
         {/* Logo */}
         <Link
           to="/"
-          className="min-w-0 max-w-[calc(100%-3.25rem)] flex items-baseline gap-1 sm:gap-1.5 font-black text-yellow-400 leading-none"
+          className="min-w-0 max-w-[calc(100%-3.25rem)] leading-none"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
-          <span className="truncate text-lg sm:text-2xl tracking-[0.12em] sm:tracking-widest">
-            {brandFirst}
-          </span>
-          <span className="truncate text-[11px] sm:text-xl text-gray-100 tracking-[0.08em] sm:tracking-normal">
-            {brandRestText}
+          <span className="flex min-w-0 flex-col sm:flex-row sm:items-baseline sm:gap-1.5">
+            <span className="truncate text-[1.02rem] sm:text-2xl font-black tracking-[0.12em] sm:tracking-widest text-yellow-400">
+              {brandPrimary}
+            </span>
+            <span className="truncate text-[10px] sm:text-xl font-semibold uppercase sm:normal-case tracking-[0.18em] sm:tracking-normal text-gray-100/85">
+              {brandSecondary}
+            </span>
           </span>
         </Link>
 
