@@ -25,11 +25,11 @@ export function SectionHeader({ tag, title, highlight, subtitle }) {
   return (
     <div className="mb-12">
       {tag && <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">{tag}</p>}
-      <h2 className="font-black leading-[0.92] text-white mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(48px, 7vw, 80px)" }}>
+      <h2 className="font-black leading-[0.92] text-white mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(36px, 9vw, 80px)" }}>
         {title}{" "}
         {highlight && <span className="text-yellow-400">{highlight}</span>}
       </h2>
-      {subtitle && <p className="text-white/50 text-lg max-w-2xl leading-relaxed font-light">{subtitle}</p>}
+      {subtitle && <p className="text-white/50 text-base md:text-lg max-w-2xl leading-relaxed font-light">{subtitle}</p>}
     </div>
   );
 }
@@ -37,13 +37,13 @@ export function SectionHeader({ tag, title, highlight, subtitle }) {
 // ── Page Hero Banner ──────────────────────────────────────────────────────────
 export function PageHero({ tag, title, highlight, subtitle }) {
   return (
-    <section className="relative bg-black pt-24 md:pt-28 pb-14 md:pb-16 px-6 overflow-hidden">
+    <section className="relative bg-black pt-20 md:pt-28 pb-12 md:pb-16 px-4 sm:px-6 overflow-hidden">
       <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(0deg,transparent,transparent 60px,#1f1f1f 60px,#1f1f1f 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,#1f1f1f 60px,#1f1f1f 61px)" }} />
       <div className="absolute top-0 right-0 w-1/3 h-full bg-yellow-400/5" style={{ filter: "blur(80px)" }} />
       <div className="relative max-w-7xl mx-auto">
         <FadeIn>
-          {tag && <div className="inline-block bg-yellow-400 text-black text-xs font-black uppercase tracking-[0.3em] px-4 py-1.5 mb-6">{tag}</div>}
-          <h1 className="font-black text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(44px, 7.8vw, 84px)", lineHeight: 0.95 }}>
+          {tag && <div className="inline-block bg-yellow-400 text-black text-[11px] font-black uppercase tracking-[0.22em] sm:tracking-[0.3em] px-3 sm:px-4 py-1.5 mb-5 sm:mb-6">{tag}</div>}
+          <h1 className="font-black text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(34px, 10vw, 84px)", lineHeight: 0.95 }}>
             {title}{" "}{highlight && <span className="text-yellow-400">{highlight}</span>}
           </h1>
           {subtitle && <p className="text-white/50 text-base md:text-lg max-w-2xl leading-relaxed font-light">{subtitle}</p>}
@@ -65,7 +65,7 @@ export function BMICalculator() {
   const pct = Math.min(100, Math.max(0, ((bmi - 10) / 30) * 100));
 
   return (
-    <div className="bg-[#111] border border-white/10 rounded-2xl p-8">
+    <div className="bg-[#111] border border-white/10 rounded-2xl p-6 sm:p-8">
       <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-2">Free Tool</p>
       <h3 className="text-3xl font-black text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>BMI CALCULATOR</h3>
 
@@ -82,7 +82,7 @@ export function BMICalculator() {
 
       <div className="bg-black rounded-xl p-6 text-center">
         <p className="text-white/40 text-sm mb-1">Your BMI</p>
-        <p className="text-6xl font-black text-white mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{bmi}</p>
+        <p className="text-5xl sm:text-6xl font-black text-white mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{bmi}</p>
         <p className={`text-lg font-bold ${category.color}`}>{category.label}</p>
         <div className="mt-4 h-2 bg-white/10 rounded-full overflow-hidden">
           <div className="h-full bg-yellow-400 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} />

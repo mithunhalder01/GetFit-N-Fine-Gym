@@ -29,6 +29,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false); // Scroll state
   const location = useLocation();
+  const [brandFirst, ...brandRest] = GYM.name.split(" ");
+  const brandRestText = brandRest.join(" ");
 
   // Scroll effect to track window position
   useEffect(() => {
@@ -57,10 +59,19 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent py-2"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
         {/* Logo */}
-        <Link to="/" className="font-black text-2xl tracking-widest text-yellow-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-          {GYM.name.split(" ")[0]}<span className="text-gray-100 text-xl">{GYM.name.split(" ").slice(1).join(" ")}</span>
+        <Link
+          to="/"
+          className="min-w-0 max-w-[calc(100%-3.25rem)] flex items-baseline gap-1 sm:gap-1.5 font-black text-yellow-400 leading-none"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+        >
+          <span className="truncate text-lg sm:text-2xl tracking-[0.12em] sm:tracking-widest">
+            {brandFirst}
+          </span>
+          <span className="truncate text-[11px] sm:text-xl text-gray-100 tracking-[0.08em] sm:tracking-normal">
+            {brandRestText}
+          </span>
         </Link>
 
         {/* Desktop links */}
@@ -116,14 +127,14 @@ export default function Navbar() {
         </ul>
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           <Link to="/contact" className="hidden lg:block bg-yellow-400 hover:bg-yellow-500 text-black text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5">
             Join Now
           </Link>
 
           <button 
             onClick={() => setMenuOpen(!menuOpen)} 
-            className="lg:hidden text-gray-100 text-xl w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-800 transition-colors p-1"
+            className="lg:hidden text-gray-100 text-xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-800 transition-colors p-1"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -133,7 +144,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-6 py-6 flex flex-col gap-4">
+        <div className="lg:hidden bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-4 sm:px-6 py-5 sm:py-6 flex max-h-[calc(100svh-3.5rem)] overflow-y-auto flex-col gap-4">
           {NAV_LINKS.map((item) => (
             <div key={item.label} className="flex flex-col gap-3 border-b border-gray-800 pb-3 last:border-b-0">
               {item.children ? (

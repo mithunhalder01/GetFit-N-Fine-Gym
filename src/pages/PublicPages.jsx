@@ -42,7 +42,7 @@ export function Programs() {
       <section className="bg-[#0d0d0d] py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">Weekly Timetable</p>
-          <h2 className="font-black leading-[0.9] text-white mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(48px,7vw,80px)" }}>
+          <h2 className="font-black leading-[0.9] text-white mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(36px,9vw,80px)" }}>
             CLASS <span className="text-yellow-400">SCHEDULE</span>
           </h2>
           <div className="flex gap-2 flex-wrap mb-8">
@@ -145,7 +145,7 @@ export function Pricing() {
                 <div className={`relative flex flex-col p-10 h-full ${p.featured ? "bg-[#111] border-t-2 border-yellow-400" : "bg-[#0a0a0a]"}`}>
                   {p.featured && <span className="absolute -top-px right-8 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1">Most Popular</span>}
                   <div className={`text-xs font-bold uppercase tracking-[0.3em] mb-2 ${p.featured ? "text-yellow-400" : "text-white/30"}`}>{p.name}</div>
-                  <div className="text-5xl font-black text-white leading-none mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>₹{price(p.price).toLocaleString()}</div>
+                  <div className="text-4xl sm:text-5xl font-black text-white leading-none mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>₹{price(p.price).toLocaleString()}</div>
                   <p className="text-white/30 text-sm mb-8">/{annual ? "year" : "month"}</p>
                   <ul className="flex flex-col gap-3 mb-8 flex-1">
                     {p.features.map(f => (
@@ -173,7 +173,7 @@ export function Pricing() {
       <section className="bg-[#0d0d0d] py-20 px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3 text-center">Got Questions?</p>
-          <h2 className="font-black text-white text-center mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(40px,6vw,64px)" }}>
+          <h2 className="font-black text-white text-center mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(34px,9vw,64px)" }}>
             FAQ<span className="text-yellow-400">s</span>
           </h2>
           <div className="space-y-4">
@@ -350,7 +350,7 @@ export function Contact() {
               ))}
               <div>
                 <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">Follow Us</p>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   <a href={GYM.instagram} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-yellow-400 text-white/40 hover:text-yellow-400 text-xs uppercase tracking-widest rounded transition-all">Instagram</a>
                   <a href={GYM.facebook} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-yellow-400 text-white/40 hover:text-yellow-400 text-xs uppercase tracking-widest rounded transition-all">Facebook</a>
                   <a href={GYM.youtube} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-yellow-400 text-white/40 hover:text-yellow-400 text-xs uppercase tracking-widest rounded transition-all">YouTube</a>

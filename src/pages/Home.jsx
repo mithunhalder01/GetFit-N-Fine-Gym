@@ -8,7 +8,7 @@ import { Check, ChevronRight } from "lucide-react";
 // ── HERO ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative min-h-[72vh] lg:min-h-[88vh] flex items-center bg-black overflow-hidden">
+    <section className="relative min-h-[78svh] sm:min-h-[72vh] lg:min-h-[88vh] flex items-center bg-black overflow-hidden">
       {/* Image */}
       <img
         src={IMAGES.hero}
@@ -24,18 +24,18 @@ function Hero() {
       {/* Big number */}
       <span className="absolute right-4 top-1/2 -translate-y-1/2 font-black text-yellow-400/[0.03] leading-none select-none pointer-events-none hidden xl:block" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "18vw" }}>99</span>
 
-      <div className="relative z-10 max-w-7xl mt-10 mx-auto px-6 pt-16 lg:pt-20 pb-10 lg:pb-12 w-full">
+      <div className="relative z-10 max-w-7xl mt-4 sm:mt-10 mx-auto px-4 sm:px-6 pt-20 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 lg:pb-12 w-full">
         <FadeIn>
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-block bg-yellow-400 text-black text-[10px] sm:text-[11px] font-black uppercase tracking-[0.28em] px-4 py-1.5 mb-5">Est. 2019 · Noida, UP</div>
+              <div className="inline-block bg-yellow-400 text-black text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] sm:tracking-[0.28em] px-3 sm:px-4 py-1.5 mb-5">Est. 2019 · Noida, UP</div>
               
               {/* Responsive Heading: Mobile pe text chota, Desktop pe 85px */}
-              <h1 className="font-black text-white mb-4 leading-[0.95] text-5xl sm:text-6xl lg:text-[85px]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <h1 className="font-black text-white mb-4 leading-[0.95] text-[clamp(2.7rem,12vw,4.75rem)] sm:text-6xl lg:text-[85px]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 FORGE YOUR<br /><span className="text-yellow-400">LEGEND</span>
               </h1>
               
-              <p className="text-white/50 text-sm sm:text-base max-w-xl leading-relaxed mb-6 font-light">
+              <p className="text-white/70 text-[15px] sm:text-base max-w-xl leading-relaxed mb-6 font-light">
                 A modern performance gym built for real results. Train smarter with elite coaching, high-end equipment, and a community that keeps you consistent.
               </p>
 
@@ -46,7 +46,7 @@ function Hero() {
                   "Strength, HIIT, & Boxing",
                   "Progress tracking",
                 ].map((t) => (
-                  <div key={t} className="flex items-start gap-2.5 text-white/60 text-[12px] sm:text-[13px] leading-relaxed">
+                  <div key={t} className="flex items-start gap-2.5 text-white/65 text-[13px] leading-relaxed">
                     <span className="mt-0.5 w-5 h-5 rounded-lg bg-yellow-400/15 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
                       <Check className="w-3.5 h-3.5 text-yellow-300" />
                     </span>
@@ -68,10 +68,10 @@ function Hero() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link to="/contact" className="text-center bg-yellow-400 text-black font-black uppercase text-[11px] tracking-widest px-8 py-4 rounded-lg hover:bg-yellow-300 transition-all duration-200">
+                <Link to="/contact" className="w-full sm:w-auto text-center bg-yellow-400 text-black font-black uppercase text-[11px] tracking-widest px-6 sm:px-8 py-4 rounded-lg hover:bg-yellow-300 transition-all duration-200">
                   Book Free Trial
                 </Link>
-                <Link to="/pricing" className="text-center border border-yellow-400 text-yellow-400 font-black uppercase text-[11px] tracking-widest px-8 py-4 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-200">
+                <Link to="/pricing" className="w-full sm:w-auto text-center border border-yellow-400 text-yellow-400 font-black uppercase text-[11px] tracking-widest px-6 sm:px-8 py-4 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-200">
                   See Pricing
                 </Link>
               </div>
@@ -156,12 +156,12 @@ function StatsBar() {
   return (
     <div className="bg-yellow-400 grid grid-cols-2 md:grid-cols-4">
       {stats.map((s, i) => (
-        <div key={i} className="text-center py-5 px-4 border-r border-black/10 last:border-0">
-          <div className="text-4xl font-black text-black tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+        <div key={i} className="text-center py-4 sm:py-5 px-3 sm:px-4 border-r border-black/10 last:border-0">
+          <div className="text-3xl sm:text-4xl font-black text-black tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {shown[i].toLocaleString()}
             {s.suffix}
           </div>
-          <div className="text-xs font-bold uppercase tracking-widest text-black/60">{s.label}</div>
+          <div className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-widest text-black/60">{s.label}</div>
         </div>
       ))}
     </div>
@@ -176,7 +176,7 @@ function ProgramsPreview() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">What We Offer</p>
-            <h2 className="font-black leading-[0.9] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(48px, 7vw, 80px)" }}>
+            <h2 className="font-black leading-[0.9] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(36px, 9vw, 80px)" }}>
               OUR <span className="text-yellow-400">PROGRAMS</span>
             </h2>
           </div>
@@ -187,7 +187,7 @@ function ProgramsPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1a1a]">
           {PROGRAMS.slice(0, 4).map((p, i) => (
             <FadeIn key={p.id} delay={i * 80}>
-              <Link to="/programs" className="bg-[#0a0a0a] p-7 group hover:bg-[#111] transition-colors h-full block">
+              <Link to="/programs" className="bg-[#0a0a0a] p-6 sm:p-7 group hover:bg-[#111] transition-colors h-full block">
                 <div className="text-yellow-400 mb-4 group-hover:scale-110 transition-transform duration-300 origin-left">
                   <ProgramIcon name={p.icon} className="w-8 h-8" />
                 </div>
@@ -226,7 +226,7 @@ function Transformations() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">Choose Your Goal</p>
-            <h2 className="font-black leading-[0.9] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(44px, 6.5vw, 76px)" }}>
+            <h2 className="font-black leading-[0.9] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(36px, 8vw, 76px)" }}>
               TRANSFORM <span className="text-yellow-400">FASTER</span>
             </h2>
           </div>
@@ -241,11 +241,11 @@ function Transformations() {
               <Link to="/contact" className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 group block">
                 <img src={c.image} alt={c.title} className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 transition-opacity" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
-                <div className="relative p-8 min-h-[260px] flex flex-col justify-end">
+                <div className="relative p-6 sm:p-8 min-h-[260px] flex flex-col justify-end">
                   <div className="inline-block bg-yellow-400 text-black text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-full w-fit mb-4">
                     {c.tag}
                   </div>
-                  <div className="flex items-end justify-between gap-6">
+                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
                     <div>
                       <div className="text-white text-3xl font-black" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{c.title}</div>
                       <div className="text-white/60 text-sm mt-2 max-w-md">{c.subtitle}</div>
@@ -272,7 +272,7 @@ function TrainersPreview() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">Expert Coaching</p>
-            <h2 className="font-black leading-[0.9] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(48px, 7vw, 80px)" }}>
+            <h2 className="font-black leading-[0.9] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(36px, 9vw, 80px)" }}>
               MEET THE <span className="text-yellow-400">TEAM</span>
             </h2>
           </div>
@@ -289,7 +289,7 @@ function TrainersPreview() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 </div>
 
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <h3 className="text-2xl font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{t.name}</h3>
                   <p className="text-yellow-400 text-xs uppercase tracking-widest font-bold mt-1 mb-3">{t.role}</p>
 
@@ -331,7 +331,7 @@ function PricingPreview() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">Membership</p>
-            <h2 className="font-black leading-[0.9] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(48px, 7vw, 80px)" }}>
+            <h2 className="font-black leading-[0.9] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(36px, 9vw, 80px)" }}>
               SIMPLE <span className="text-yellow-400">PRICING</span>
             </h2>
           </div>
@@ -343,10 +343,10 @@ function PricingPreview() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {PLANS.map((p, i) => (
             <FadeIn key={p.name} delay={i * 80}>
-              <div className={`relative rounded-3xl border h-full p-8 ${p.featured ? "bg-[#111] border-yellow-400/25" : "bg-[#0a0a0a] border-white/5"}`}>
+              <div className={`relative rounded-3xl border h-full p-6 sm:p-8 ${p.featured ? "bg-[#111] border-yellow-400/25" : "bg-[#0a0a0a] border-white/5"}`}>
                 {p.featured && <span className="absolute -top-px right-8 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-b">Most Popular</span>}
                 <div className={`text-xs font-bold uppercase tracking-[0.3em] mb-2 ${p.featured ? "text-yellow-400" : "text-white/30"}`}>{p.name}</div>
-                <div className="text-5xl font-black text-white leading-none mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>₹{p.price.toLocaleString()}</div>
+                <div className="text-4xl sm:text-5xl font-black text-white leading-none mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>₹{p.price.toLocaleString()}</div>
                 <p className="text-white/30 text-sm mb-6">/month</p>
 
                 <div className="space-y-3 mb-8">
@@ -375,15 +375,15 @@ function CTABanner() {
   return (
     <section className="bg-yellow-400 py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="font-black text-black mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(48px, 7vw, 80px)" }}>
+        <h2 className="font-black text-black mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(34px, 9vw, 80px)" }}>
           READY TO START YOUR JOURNEY?
         </h2>
-        <p className="text-black/60 text-lg mb-8">Join 2500+ members who've already transformed their lives. Your first session is FREE.</p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link to="/contact" className="bg-black text-yellow-400 font-black uppercase text-sm tracking-widest px-8 py-4 rounded hover:bg-gray-900 transition-colors">
+        <p className="text-black/60 text-base sm:text-lg mb-8">Join 2500+ members who've already transformed their lives. Your first session is FREE.</p>
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+          <Link to="/contact" className="w-full sm:w-auto bg-black text-yellow-400 font-black uppercase text-sm tracking-widest px-6 sm:px-8 py-4 rounded hover:bg-gray-900 transition-colors">
             Book Free Trial
           </Link>
-          <Link to="/pricing" className="border-2 border-black text-black font-black uppercase text-sm tracking-widest px-8 py-4 rounded hover:bg-black hover:text-yellow-400 transition-all">
+          <Link to="/pricing" className="w-full sm:w-auto border-2 border-black text-black font-black uppercase text-sm tracking-widest px-6 sm:px-8 py-4 rounded hover:bg-black hover:text-yellow-400 transition-all">
             View Pricing
           </Link>
         </div>

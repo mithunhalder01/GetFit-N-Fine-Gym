@@ -6,11 +6,11 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 export function Footer() {
   return (
     <footer className="bg-gray-950 text-white border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <div className="font-black text-2xl tracking-widest text-yellow-400 mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <div className="font-black text-xl sm:text-2xl tracking-[0.12em] sm:tracking-widest text-yellow-400 mb-3 break-words" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               {GYM.name}
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-4">{GYM.address}</p>
@@ -62,7 +62,7 @@ export function Footer() {
 
         <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-sm">© 2025 {GYM.name}. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center md:justify-end gap-4 sm:gap-6">
             <Link to="/privacy" className="text-white/20 hover:text-white/50 text-xs uppercase tracking-widest transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="text-white/20 hover:text-white/50 text-xs uppercase tracking-widest transition-colors">Terms of Service</Link>
             <Link to="/refund" className="text-white/20 hover:text-white/50 text-xs uppercase tracking-widest transition-colors">Refund Policy</Link>
