@@ -8,7 +8,7 @@ import { Check, ChevronRight } from "lucide-react";
 // ── HERO ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative min-h-[70svh] sm:min-h-[72vh] lg:min-h-[88vh] flex items-center bg-black overflow-hidden">
+    <section className="relative min-h-[78svh] sm:min-h-[72vh] lg:min-h-[88vh] flex items-center bg-black overflow-hidden">
       {/* Image */}
       <img
         src={IMAGES.hero}
@@ -24,7 +24,7 @@ function Hero() {
       {/* Big number */}
       <span className="absolute right-4 top-1/2 -translate-y-1/2 font-black text-yellow-400/[0.03] leading-none select-none pointer-events-none hidden xl:block" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "18vw" }}>99</span>
 
-      <div className="relative z-10 max-w-7xl mt-4 sm:mt-10 mx-auto px-4 sm:px-6 pt-16 sm:pt-20 lg:pt-24 pb-6 sm:pb-8 lg:pb-12 w-full">
+      <div className="relative z-10 max-w-7xl mt-4 sm:mt-10 mx-auto px-4 sm:px-6 pt-20 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 lg:pb-12 w-full">
         <FadeIn>
           <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 items-center">
             <div className="lg:col-span-7">
@@ -46,7 +46,7 @@ function Hero() {
                   "Strength, HIIT, & Boxing",
                   "Progress tracking",
                 ].map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-white/65 text-sm sm:text-[13px] leading-relaxed">
+                  <div key={t} className="flex items-start gap-2.5 text-white/65 text-[13px] leading-relaxed">
                     <span className="mt-0.5 w-5 h-5 rounded-lg bg-yellow-400/15 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
                       <Check className="w-3.5 h-3.5 text-yellow-300" />
                     </span>
@@ -56,7 +56,7 @@ function Hero() {
               </div>
 
               {/* Stats: Mobile pe wrapping achhi dikhegi */}
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-8">
+              <div className="flex flex-wrap items-center gap-2 mb-8">
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur px-3 py-1.5">
                   <Stars count={5} />
                   <span className="text-white/60 text-[10px] font-semibold uppercase tracking-wider">4.9+ rated</span>
@@ -67,7 +67,7 @@ function Hero() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/contact" className="w-full sm:w-auto text-center bg-yellow-400 text-black font-black uppercase text-[11px] tracking-widest px-6 sm:px-8 py-4 rounded-lg hover:bg-yellow-300 transition-all duration-200">
                   Book Free Trial
                 </Link>

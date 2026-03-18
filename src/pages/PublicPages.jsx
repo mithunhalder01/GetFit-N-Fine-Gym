@@ -332,10 +332,10 @@ export function Contact() {
     <>
       <PageHero tag="Get Started" title="JOIN" highlight="TODAY" subtitle="Your first session is FREE. Fill in your details and we'll get back to you within 2 hours." />
       <section className="bg-black py-20 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 sm:gap-16">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
           {/* Info */}
           <FadeIn>
-            <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-8">
               {[
                 { label: "Address", val: GYM.address },
                 { label: "Hours (Mon–Sat)", val: GYM.hours.weekday },
@@ -361,7 +361,7 @@ export function Contact() {
 
           {/* Form */}
           <FadeIn delay={200}>
-            <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <h3 className="text-3xl font-black text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>BOOK A FREE TRIAL</h3>
               {[{ k: "name", label: "Full Name *", type: "text" }, { k: "email", label: "Email Address", type: "email" }, { k: "phone", label: "WhatsApp Number *", type: "tel" }].map(({ k, label, type }) => (
                 <div key={k}>

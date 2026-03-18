@@ -144,18 +144,18 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-4 sm:px-6 py-3 sm:py-4 flex max-h-[85svh] overflow-y-auto flex-col gap-3">
+        <div className="lg:hidden bg-gray-950/98 backdrop-blur-xl border-t border-white/10 px-4 sm:px-6 py-5 sm:py-6 flex max-h-[calc(100svh-3.5rem)] overflow-y-auto flex-col gap-4">
           {NAV_LINKS.map((item) => (
             <div key={item.label} className="flex flex-col gap-3 border-b border-gray-800 pb-3 last:border-b-0">
               {item.children ? (
                 <>
                   <div className="text-xs uppercase tracking-widest font-bold text-gray-400 px-1">{item.label}</div>
-                  <div className="flex flex-col gap-2 pl-3 sm:gap-1.5">
+                  <div className="flex flex-col gap-2 pl-3">
                     {item.children.map((c) => (
                       <Link
                         key={c.to}
                         to={c.to}
-                        className={`text-base font-medium transition-colors py-2.5 px-4 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
+                        className={`text-base font-medium transition-colors py-2 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
                           isActive(c.to) ? "bg-yellow-400/20 text-yellow-500 font-bold" : ""
                         }`}
                         onClick={() => setMenuOpen(false)}
@@ -168,7 +168,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={item.to}
-                  className={`text-base font-medium transition-colors py-2.5 px-4 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
+                  className={`text-base font-medium transition-colors py-3 px-3 rounded-lg text-gray-200 hover:bg-gray-800 hover:text-yellow-400 ${
                     isActive(item.to) ? "bg-yellow-400/20 text-yellow-400 font-bold" : ""
                   }`}
                   onClick={() => setMenuOpen(false)}
