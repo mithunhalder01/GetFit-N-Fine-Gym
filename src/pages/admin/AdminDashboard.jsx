@@ -29,7 +29,7 @@ export default function AdminDashboard() {
         <StatCard icon={<Users className="w-5 h-5" />} label="Total Members" value={members.length} sub={`${active.length} active`} />
         <StatCard icon={<IndianRupee className="w-5 h-5" />} label="Monthly Revenue" value={`₹${(totalRevenue / 1000).toFixed(1)}K`} sub="All active plans" color="text-green-400" />
         <StatCard icon={<AlertCircle className="w-5 h-5" />} label="Fees Overdue" value={overdue.length} sub="Need attention" color="text-red-400" />
-        <StatCard icon={<TriangleAlert className="w-5 h-5" />} label="Due in 7 Days" value={dueSoon.length} sub="Send reminders" color="text-yellow-400" />
+        <StatCard icon={<TriangleAlert className="w-5 h-5" />} label="Due in 7 Days" value={dueSoon.length} sub="Send reminders" color="text-orange-500" />
       </div>
 
       {/* Plans breakdown */}
@@ -45,13 +45,13 @@ export default function AdminDashboard() {
 
       {/* Birthday alerts */}
       {birthdays.length > 0 && (
-        <div className="bg-yellow-400/10 border border-yellow-400/20 rounded-2xl p-6 mb-6">
+        <div className="bg-orange-500/10 border border-orange-500/20 rounded-2xl p-6 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-10 h-10 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center text-yellow-300">
+            <span className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-600">
               <Cake className="w-5 h-5" />
             </span>
             <div>
-              <h3 className="text-yellow-400 font-bold">Birthday{birthdays.length > 1 ? "s" : ""} Today!</h3>
+              <h3 className="text-orange-500 font-bold">Birthday{birthdays.length > 1 ? "s" : ""} Today!</h3>
               <p className="text-white/40 text-sm">Send them a special wish on WhatsApp</p>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function AdminDashboard() {
                   <p className="text-white/40 text-xs">{m.phone} · {m.plan}</p>
                 </div>
                 <a href={whatsappLink(m.phone, birthdayMsg.message(GYM.name, m.name))} target="_blank" rel="noreferrer"
-                  className="bg-yellow-400 text-black text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors">
+                  className="bg-orange-500 text-black text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
                   Wish Now
                 </a>
               </div>
@@ -77,7 +77,7 @@ export default function AdminDashboard() {
         <div className="bg-gray-900 border border-white/5 rounded-2xl p-6">
           <div className="flex items-center justify-between mb-5">
             <h3 className="text-lg font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Overdue Fees</h3>
-            <Link to="/admin/members" className="text-yellow-400 text-xs uppercase tracking-widest hover:underline">View All</Link>
+            <Link to="/admin/members" className="text-orange-500 text-xs uppercase tracking-widest hover:underline">View All</Link>
           </div>
           {overdue.length === 0 ? (
             <p className="text-white/30 text-sm text-center py-4 inline-flex items-center justify-center gap-2 w-full">
@@ -108,7 +108,7 @@ export default function AdminDashboard() {
         <div className="bg-gray-900 border border-white/5 rounded-2xl p-6">
           <div className="flex items-center justify-between mb-5">
             <h3 className="text-lg font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Due in 7 Days</h3>
-            <Link to="/admin/festival" className="text-yellow-400 text-xs uppercase tracking-widest hover:underline">Festival Wishes</Link>
+            <Link to="/admin/festival" className="text-orange-500 text-xs uppercase tracking-widest hover:underline">Festival Wishes</Link>
           </div>
           {dueSoon.length === 0 ? (
             <p className="text-white/30 text-sm text-center py-4 inline-flex items-center justify-center gap-2 w-full">
@@ -120,12 +120,12 @@ export default function AdminDashboard() {
                 <div key={m.id} className="flex items-center justify-between">
                   <div>
                     <p className="text-white text-sm font-medium">{m.name}</p>
-                    <p className="text-yellow-400 text-xs">Due: {new Date(m.feeDueDate).toLocaleDateString("en-IN")}</p>
+                    <p className="text-orange-500 text-xs">Due: {new Date(m.feeDueDate).toLocaleDateString("en-IN")}</p>
                   </div>
                   <div className="flex gap-2">
                     <span className="text-white/50 text-sm font-bold">₹{m.feeAmount}</span>
                     <a href={whatsappLink(m.phone, feeMsg.message(GYM.name, m.name))} target="_blank" rel="noreferrer"
-                      className="bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 text-xs px-3 py-1 rounded-lg hover:bg-yellow-400/20 transition-colors">
+                      className="bg-orange-500/10 text-orange-500 border border-orange-500/20 text-xs px-3 py-1 rounded-lg hover:bg-orange-500/20 transition-colors">
                       Remind
                     </a>
                   </div>
@@ -144,7 +144,7 @@ export default function AdminDashboard() {
           { to: "/admin/schedule", icon: CalendarDays, label: "Manage Schedule" },
           { to: "/", icon: Globe, label: "View Website" },
         ].map(({ to, icon: Icon, label }) => (
-          <Link key={to} to={to} className="bg-gray-900 border border-white/5 hover:border-yellow-400/30 rounded-xl p-4 text-center group transition-all">
+          <Link key={to} to={to} className="bg-gray-900 border border-white/5 hover:border-orange-500/30 rounded-xl p-4 text-center group transition-all">
             <span className="w-11 h-11 mx-auto mb-2 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 group-hover:scale-105 transition-transform">
               <Icon className="w-5 h-5" />
             </span>

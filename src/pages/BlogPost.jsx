@@ -13,7 +13,7 @@ export default function BlogPost() {
         <PageHero tag="Blog" title="NOT" highlight="FOUND" subtitle="This article does not exist." />
         <section className="bg-black py-16 px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <Link to="/blog" className="text-yellow-400 text-sm uppercase tracking-widest font-bold hover:underline inline-flex items-center gap-1">
+            <Link to="/blog" className="text-orange-500 text-sm uppercase tracking-widest font-bold hover:underline inline-flex items-center gap-1">
               Back to Blog <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -34,7 +34,7 @@ export default function BlogPost() {
 
             <div className="mt-8 bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 md:p-10">
               <div className="flex items-center justify-between gap-4 flex-wrap">
-                <span className="text-xs font-bold uppercase tracking-widest text-yellow-400">{post.category}</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-orange-500">{post.category}</span>
                 <span className="text-white/30 text-xs">{post.date} · {post.readTime} read</span>
               </div>
               <h1 className="mt-3 text-3xl md:text-4xl font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -49,14 +49,14 @@ export default function BlogPost() {
                   Want a plan personalized for your goal? Book a free trial and we’ll recommend the right training + schedule.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <Link to="/contact" className="bg-yellow-400 text-black font-black uppercase text-xs tracking-widest px-6 py-3 rounded-lg hover:bg-yellow-300 transition-colors">
+                  <Link to="/contact" className="bg-orange-500 text-black font-black uppercase text-xs tracking-widest px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors">
                     Book Free Trial
                   </Link>
                   <a
                     href={`https://wa.me/${GYM.whatsapp}?text=${encodeURIComponent(`Hi ${GYM.name}! I read "${post.title}" and want a plan for my goal.`)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="border border-white/15 text-white/70 font-black uppercase text-xs tracking-widest px-6 py-3 rounded-lg hover:border-yellow-400 hover:text-yellow-400 transition-colors"
+                    className="border border-white/15 text-white/70 font-black uppercase text-xs tracking-widest px-6 py-3 rounded-lg hover:border-orange-500 hover:text-orange-500 transition-colors"
                   >
                     WhatsApp Us
                   </a>
@@ -65,7 +65,7 @@ export default function BlogPost() {
             </div>
 
             <div className="mt-8 text-center">
-              <Link to="/blog" className="text-yellow-400 text-sm uppercase tracking-widest font-bold hover:underline inline-flex items-center gap-1">
+              <Link to="/blog" className="text-orange-500 text-sm uppercase tracking-widest font-bold hover:underline inline-flex items-center gap-1">
                 Back to Blog <ChevronRight className="w-4 h-4" />
               </Link>
             </div>

@@ -35,33 +35,33 @@ export default function AdminSchedule() {
   const handleEdit = (i) => { setForm({ ...schedule[i] }); setEditing(i); setAdding(false); };
   const handleDelete = (i) => save(schedule.filter((_, idx) => idx !== i));
 
-  const levelColor = { Beginner: "text-blue-400 bg-blue-400/10", Intermediate: "text-orange-400 bg-orange-400/10", Advanced: "text-yellow-400 bg-yellow-400/10", "All Levels": "text-green-400 bg-green-400/10" };
+  const levelColor = { Beginner: "text-blue-400 bg-blue-400/10", Intermediate: "text-orange-500 bg-orange-500/10", Advanced: "text-orange-500 bg-orange-500/10", "All Levels": "text-green-400 bg-green-400/10" };
 
   return (
     <AdminWrapper title="CLASS SCHEDULE">
       <div className="flex gap-2 flex-wrap mb-6">
         {["All", ...DAYS].map(d => (
-          <button key={d} onClick={() => setSelectedDay(d)} className={`px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-lg transition-all ${d === selectedDay ? "bg-yellow-400 text-black" : "border border-white/10 text-white/40 hover:border-yellow-400/30 hover:text-white/70"}`}>{d}</button>
+          <button key={d} onClick={() => setSelectedDay(d)} className={`px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-lg transition-all ${d === selectedDay ? "bg-orange-500 text-black" : "border border-white/10 text-white/40 hover:border-orange-500/30 hover:text-white/70"}`}>{d}</button>
         ))}
-        <button onClick={() => { setAdding(true); setEditing(null); }} className="w-full sm:w-auto sm:ml-auto bg-yellow-400 text-black font-black text-xs uppercase tracking-widest px-5 py-2 rounded-lg hover:bg-yellow-300 transition-colors">
+        <button onClick={() => { setAdding(true); setEditing(null); }} className="w-full sm:w-auto sm:ml-auto bg-orange-500 text-black font-black text-xs uppercase tracking-widest px-5 py-2 rounded-lg hover:bg-orange-600 transition-colors">
           <span className="inline-flex items-center gap-2"><Plus className="w-4 h-4" /> Add Class</span>
         </button>
       </div>
 
       {/* Add/Edit form */}
       {(adding || editing !== null) && (
-        <div className="bg-gray-900 border border-yellow-400/20 rounded-2xl p-6 mb-6">
+        <div className="bg-gray-900 border border-orange-500/20 rounded-2xl p-6 mb-6">
           <h3 className="text-lg font-black text-white mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {editing !== null ? "EDIT CLASS" : "ADD NEW CLASS"}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
             <div>
               <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Time *</label>
-              <input type="time" value={form.time} onChange={e => f("time")(e.target.value)} className="w-full bg-gray-800 border border-white/10 focus:border-yellow-400/50 outline-none text-white px-4 py-3 rounded-xl text-sm" />
+              <input type="time" value={form.time} onChange={e => f("time")(e.target.value)} className="w-full bg-gray-800 border border-white/10 focus:border-orange-500/50 outline-none text-white px-4 py-3 rounded-xl text-sm" />
             </div>
             <div>
               <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Class Name *</label>
-              <input value={form.name} onChange={e => f("name")(e.target.value)} placeholder="e.g. Morning HIIT" className="w-full bg-gray-800 border border-white/10 focus:border-yellow-400/50 outline-none text-white placeholder-white/20 px-4 py-3 rounded-xl text-sm" />
+              <input value={form.name} onChange={e => f("name")(e.target.value)} placeholder="e.g. Morning HIIT" className="w-full bg-gray-800 border border-white/10 focus:border-orange-500/50 outline-none text-white placeholder-white/20 px-4 py-3 rounded-xl text-sm" />
             </div>
             <div>
               <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Trainer</label>
@@ -86,13 +86,13 @@ export default function AdminSchedule() {
               <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Days</label>
               <div className="flex flex-wrap gap-1.5">
                 {DAYS.map(d => (
-                  <button key={d} type="button" onClick={() => toggleDay(d)} className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${form.days.includes(d) ? "bg-yellow-400 text-black" : "bg-gray-800 border border-white/10 text-white/40"}`}>{d}</button>
+                  <button key={d} type="button" onClick={() => toggleDay(d)} className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${form.days.includes(d) ? "bg-orange-500 text-black" : "bg-gray-800 border border-white/10 text-white/40"}`}>{d}</button>
                 ))}
               </div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
-            <button onClick={handleSave} className="bg-yellow-400 text-black font-black text-xs uppercase tracking-widest px-6 py-3 rounded-xl hover:bg-yellow-300 transition-colors">Save Class</button>
+            <button onClick={handleSave} className="bg-orange-500 text-black font-black text-xs uppercase tracking-widest px-6 py-3 rounded-xl hover:bg-orange-600 transition-colors">Save Class</button>
             <button onClick={() => { setAdding(false); setEditing(null); }} className="border border-white/10 text-white/50 px-6 py-3 rounded-xl hover:bg-white/5 transition-colors text-sm">Cancel</button>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function AdminSchedule() {
                   <td className="py-3.5 px-4 text-white/30 text-xs">{s.days?.join(", ") || "—"}</td>
                   <td className="py-3.5 px-4">
                     <div className="flex gap-2">
-                      <button onClick={() => handleEdit(schedule.indexOf(s))} className="text-white/40 hover:text-yellow-400 hover:bg-yellow-400/10 text-xs px-2.5 py-1.5 rounded-lg transition-all inline-flex items-center gap-1.5" aria-label="Edit class">
+                      <button onClick={() => handleEdit(schedule.indexOf(s))} className="text-white/40 hover:text-orange-500 hover:bg-orange-500/10 text-xs px-2.5 py-1.5 rounded-lg transition-all inline-flex items-center gap-1.5" aria-label="Edit class">
                         <Pencil className="w-4 h-4" /> Edit
                       </button>
                       <button onClick={() => handleDelete(schedule.indexOf(s))} className="text-white/40 hover:text-red-400 hover:bg-red-400/10 text-xs px-2.5 py-1.5 rounded-lg transition-all inline-flex items-center gap-1.5" aria-label="Delete class">

@@ -1,16 +1,16 @@
 // ── GYM CONFIG ────────────────────────────────────────────────────────────────
 export const GYM = {
-  name: "Get Fit N Fine Gym",
+  name: "Gym of Haryana",
   tagline: "Forge Your Legend",
-  website: "https://get-fit-n-fine-gym.in",
-  phone: "+91 7303670724",
-  email: "hello@get-fit-n-fine-gym.in",
-  address: "Plot 47, Sector 18, Noida, UP — 201301",
+  website: "https://gym-of-haryana.in",
+  phone: "07568664915",
+  email: "hello@gym-of-haryana.in",
+  address: "Plot no.70, Janki Tower, near 7no.bus stand, Braj Puri, Jagatpura, Jaipur, Rajasthan 302017",
   hours: { weekday: "5:00 AM – 11:00 PM", sunday: "7:00 AM – 8:00 PM" },
-  instagram: "https://instagram.com/ironpeak",
-  facebook: "https://facebook.com/ironpeak",
+  instagram: "https://instagram.com/gym-of-haryana",
+  facebook: "https://facebook.com/gym-of-haryana",
   youtube: "https://youtube.com",
-  whatsapp: "917303670724",
+  whatsapp: "917568664915",
 };
 
 export const IMAGES = {
@@ -48,7 +48,7 @@ export const SCHEDULE = [
 
 // ── TRAINERS ──────────────────────────────────────────────────────────────────
 export const TRAINERS = [
-  { id: 1, initials: "RM", name: "Rohan Mehta", role: "Head Coach · HIIT", exp: "10 Years", cert: "NSCA-CSCS", specialties: ["HIIT", "Fat Loss", "Endurance"], bio: "NSCA-certified strength and conditioning specialist with 10 years of competitive athletic coaching experience. Specializes in body recomposition and high-intensity training.", color: "from-yellow-500 to-orange-500", image: "https://images.unsplash.com/photo-1554284126-aa88f22d8b72?auto=format&fit=crop&w=1200&q=80" },
+  { id: 1, initials: "RM", name: "Rohan Mehta", role: "Head Coach · HIIT", exp: "10 Years", cert: "NSCA-CSCS", specialties: ["HIIT", "Fat Loss", "Endurance"], bio: "NSCA-certified strength and conditioning specialist with 10 years of competitive athletic coaching experience. Specializes in body recomposition and high-intensity training.", color: "from-orange-600 to-orange-500", image: "https://images.unsplash.com/photo-1554284126-aa88f22d8b72?auto=format&fit=crop&w=1200&q=80" },
   { id: 2, initials: "AS", name: "Arjun Singh", role: "Strength & Powerlifting", exp: "12 Years", cert: "IPF Coach L2", specialties: ["Powerlifting", "Strength", "Periodisation"], bio: "Former national-level powerlifter and 3× state champion. Expert in periodization, progressive overload, and strength programming.", color: "from-blue-500 to-indigo-600", image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=1200&q=80" },
   { id: 3, initials: "PN", name: "Priya Nair", role: "Yoga & Mobility", exp: "8 Years", cert: "RYT-500", specialties: ["Yoga", "Mobility", "Recovery"], bio: "500-hour certified yoga instructor. Expert in functional movement, injury prevention, and building athletic longevity.", color: "from-teal-500 to-green-500", image: "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=1200&q=80" },
   { id: 4, initials: "KK", name: "Kabir Khan", role: "Boxing & MMA Coach", exp: "9 Years", cert: "WBC Certified", specialties: ["Boxing", "MMA", "Combat Conditioning"], bio: "Professional boxer and certified MMA coach. 8+ years teaching combat sports from beginner to competitive level.", color: "from-red-500 to-pink-500", image: "https://images.unsplash.com/photo-1549476464-37392f717541?auto=format&fit=crop&w=1200&q=80" },
@@ -99,7 +99,7 @@ export const BLOGS = [
 export const FESTIVAL_TEMPLATES = [
   {
     id: "diwali", name: "Diwali", icon: "sparkles", date: "October",
-    color: "from-orange-500 to-yellow-400",
+    color: "from-orange-500 to-orange-500",
     message: (gym, member) => `Happy Diwali, ${member}!\n\nWishing you and your family a festival full of light, joy, and good health.\n\nKeep showing up and keep progressing.\n\n— ${gym}`,
   },
   {
@@ -124,7 +124,7 @@ export const FESTIVAL_TEMPLATES = [
   },
   {
     id: "birthday", name: "Birthday Wish", icon: "sparkles", date: "Member's birthday",
-    color: "from-yellow-400 to-pink-500",
+    color: "from-orange-500 to-pink-500",
     message: (gym, member) => `Happy Birthday, ${member}!\n\nWishing you an amazing year of strength and good health.\n\nYour birthday gift: a free PT session this month. Book at the front desk.\n\n— ${gym}`,
   },
   {

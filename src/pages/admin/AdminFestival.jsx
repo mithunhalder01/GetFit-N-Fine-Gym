@@ -70,12 +70,12 @@ export default function AdminFestival() {
           <div className="grid grid-cols-2 gap-3 mb-8">
             {FESTIVAL_TEMPLATES.map(t => (
               <button key={t.id} onClick={() => { setSelected(t.id); setCustomMessage(t.message(GYM.name, "{{member}}")); }}
-                className={`text-left p-4 rounded-xl border transition-all ${selected === t.id ? "border-yellow-400 bg-yellow-400/10" : "border-white/10 bg-gray-900 hover:border-white/20"}`}>
+                className={`text-left p-4 rounded-xl border transition-all ${selected === t.id ? "border-orange-500 bg-orange-500/10" : "border-white/10 bg-gray-900 hover:border-white/20"}`}>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className={`w-9 h-9 rounded-xl border flex items-center justify-center ${selected === t.id ? "border-yellow-400/30 bg-yellow-400/10 text-yellow-300" : "border-white/10 bg-white/5 text-white/60"}`}>
+                  <span className={`w-9 h-9 rounded-xl border flex items-center justify-center ${selected === t.id ? "border-orange-500/30 bg-orange-500/10 text-orange-600" : "border-white/10 bg-white/5 text-white/60"}`}>
                     <Sparkles className="w-4 h-4" />
                   </span>
-                  <span className={`text-sm font-bold ${selected === t.id ? "text-yellow-400" : "text-white"}`}>{t.name}</span>
+                  <span className={`text-sm font-bold ${selected === t.id ? "text-orange-500" : "text-white"}`}>{t.name}</span>
                 </div>
                 <p className="text-white/30 text-xs">{t.date}</p>
               </button>
@@ -88,7 +88,7 @@ export default function AdminFestival() {
             <div className="relative">
               <Image className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
               <input value={bannerUrl} onChange={e => setBannerUrl(e.target.value)} placeholder="Paste an image URL (optional)"
-                className="w-full bg-gray-900 border border-white/10 focus:border-yellow-400/50 outline-none text-white placeholder-white/30 pl-10 pr-4 py-3 rounded-xl text-sm" />
+                className="w-full bg-gray-900 border border-white/10 focus:border-orange-500/50 outline-none text-white placeholder-white/30 pl-10 pr-4 py-3 rounded-xl text-sm" />
             </div>
             <p className="text-white/25 text-xs mt-2">Tip: Upload image to imgur.com or cloudinary.com and paste the link here. It'll be added to the message.</p>
           </div>
@@ -100,7 +100,7 @@ export default function AdminFestival() {
               <textarea value={selected === "custom" ? customMessage : template?.message(GYM.name, "[Member Name]") + (bannerUrl ? `\n\n${bannerUrl}` : "")}
                 onChange={e => setCustomMessage(e.target.value)}
                 rows={8} readOnly={selected !== "custom"}
-                className={`w-full bg-gray-900 border border-white/10 text-white/70 px-4 py-3 rounded-xl text-sm resize-none font-mono leading-relaxed ${selected !== "custom" ? "opacity-70 cursor-default" : "focus:border-yellow-400/50 outline-none"}`} />
+                className={`w-full bg-gray-900 border border-white/10 text-white/70 px-4 py-3 rounded-xl text-sm resize-none font-mono leading-relaxed ${selected !== "custom" ? "opacity-70 cursor-default" : "focus:border-orange-500/50 outline-none"}`} />
               <p className="text-white/25 text-xs mt-1">Each member's name is auto-personalized when sending.</p>
             </div>
           )}
@@ -110,7 +110,7 @@ export default function AdminFestival() {
         <div>
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-sm font-bold text-white/50 uppercase tracking-widest">4. Select Members</h3>
-            <button onClick={handleSelectAll} className="text-yellow-400 text-xs uppercase tracking-widest hover:underline">
+            <button onClick={handleSelectAll} className="text-orange-500 text-xs uppercase tracking-widest hover:underline">
               {selectAll ? "Deselect All" : "Select All"}
             </button>
           </div>
@@ -122,8 +122,8 @@ export default function AdminFestival() {
               members.map(m => (
                 <label key={m.id} className="flex items-center gap-3 px-4 py-3 hover:bg-white/[0.02] cursor-pointer border-b border-white/5 last:border-0 transition-colors">
                   <input type="checkbox" checked={selectedMembers.includes(m.id)} onChange={() => toggleMember(m.id)}
-                    className="w-4 h-4 accent-yellow-400 cursor-pointer" />
-                  <div className="w-8 h-8 rounded-full bg-yellow-400/10 flex items-center justify-center text-yellow-400 text-xs font-black flex-shrink-0">
+                    className="w-4 h-4 accent-orange-500 cursor-pointer" />
+                  <div className="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500 text-xs font-black flex-shrink-0">
                     {m.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -144,7 +144,7 @@ export default function AdminFestival() {
                 <p className="text-white/30 text-xs mt-0.5">Each will open in WhatsApp individually</p>
               </div>
               <div className="text-right">
-                <p className="text-yellow-400 font-black text-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{selectedMembers.length}</p>
+                <p className="text-orange-500 font-black text-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{selectedMembers.length}</p>
                 <p className="text-white/30 text-xs">messages</p>
               </div>
             </div>
@@ -156,10 +156,10 @@ export default function AdminFestival() {
                   <span className="text-white/50 text-xs">
                     {sending ? `Sending... ${sentCount}/${totalCount}` : `${sentCount}/${totalCount} sent`}
                   </span>
-                  <span className="text-yellow-400 text-xs font-bold">{totalCount > 0 ? Math.round((sentCount / totalCount) * 100) : 0}%</span>
+                  <span className="text-orange-500 text-xs font-bold">{totalCount > 0 ? Math.round((sentCount / totalCount) * 100) : 0}%</span>
                 </div>
                 <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div className={`h-full rounded-full transition-all duration-500 ${completed ? "bg-green-400" : "bg-yellow-400"}`}
+                  <div className={`h-full rounded-full transition-all duration-500 ${completed ? "bg-green-400" : "bg-orange-500"}`}
                     style={{ width: `${totalCount > 0 ? (sentCount / totalCount) * 100 : 0}%` }} />
                 </div>
                 {completed && (

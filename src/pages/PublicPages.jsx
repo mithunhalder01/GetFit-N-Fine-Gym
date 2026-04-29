@@ -10,7 +10,7 @@ export function Programs() {
   const [day, setDay] = useState("All");
   const days = ["All", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const filtered = day === "All" ? SCHEDULE : SCHEDULE.filter(s => s.days.includes(day));
-  const levelColor = { Beginner: "text-blue-400 bg-blue-400/10", Intermediate: "text-orange-400 bg-orange-400/10", Advanced: "text-yellow-400 bg-yellow-400/10", "All Levels": "text-green-400 bg-green-400/10" };
+  const levelColor = { Beginner: "text-blue-400 bg-blue-400/10", Intermediate: "text-orange-500 bg-orange-500/10", Advanced: "text-orange-500 bg-orange-500/10", "All Levels": "text-green-400 bg-green-400/10" };
 
   return (
     <>
@@ -21,7 +21,7 @@ export function Programs() {
             {PROGRAMS.map((p, i) => (
               <FadeIn key={p.id} delay={i * 60}>
                 <Link to="/contact" className="bg-[#0a0a0a] p-8 group hover:bg-[#111] transition-colors h-full block">
-                  <div className="text-yellow-400 mb-5 group-hover:scale-110 transition-transform duration-300 origin-left">
+                  <div className="text-orange-500 mb-5 group-hover:scale-110 transition-transform duration-300 origin-left">
                     <ProgramIcon name={p.icon} className="w-9 h-9" />
                   </div>
                   <h3 className="text-3xl font-black text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{p.title}</h3>
@@ -30,7 +30,7 @@ export function Programs() {
                     <p className="text-xs text-white/30"><span className="text-white/50">Duration:</span> {p.duration}</p>
                     <p className="text-xs text-white/30"><span className="text-white/50">Days:</span> {p.days}</p>
                   </div>
-                  <span className="border border-white/10 group-hover:border-yellow-400 group-hover:text-yellow-400 text-white/30 text-xs uppercase tracking-widest px-3 py-1.5 transition-all">{p.level}</span>
+                  <span className="border border-white/10 group-hover:border-orange-500 group-hover:text-orange-500 text-white/30 text-xs uppercase tracking-widest px-3 py-1.5 transition-all">{p.level}</span>
                 </Link>
               </FadeIn>
             ))}
@@ -41,18 +41,18 @@ export function Programs() {
       {/* Schedule */}
       <section className="bg-[#0d0d0d] py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">Weekly Timetable</p>
+          <p className="text-orange-500 text-xs font-bold uppercase tracking-[0.3em] mb-3">Weekly Timetable</p>
           <h2 className="font-black leading-[0.9] text-white mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(36px,9vw,80px)" }}>
-            CLASS <span className="text-yellow-400">SCHEDULE</span>
+            CLASS <span className="text-orange-500">SCHEDULE</span>
           </h2>
           <div className="flex gap-2 flex-wrap mb-8">
             {days.map(d => (
-              <button key={d} onClick={() => setDay(d)} className={`px-4 py-2 text-xs font-bold uppercase tracking-widest rounded transition-all ${d === day ? "bg-yellow-400 text-black" : "border border-white/10 text-white/40 hover:border-yellow-400/50 hover:text-white/70"}`}>{d}</button>
+              <button key={d} onClick={() => setDay(d)} className={`px-4 py-2 text-xs font-bold uppercase tracking-widest rounded transition-all ${d === day ? "bg-orange-500 text-black" : "border border-white/10 text-white/40 hover:border-orange-500/50 hover:text-white/70"}`}>{d}</button>
             ))}
           </div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[600px]">
-              <thead><tr className="border-b border-white/10">{["Time", "Class", "Trainer", "Duration", "Days", "Level"].map(h => <th key={h} className="text-left py-3 px-4 text-yellow-400 text-xs uppercase tracking-widest font-bold">{h}</th>)}</tr></thead>
+              <thead><tr className="border-b border-white/10">{["Time", "Class", "Trainer", "Duration", "Days", "Level"].map(h => <th key={h} className="text-left py-3 px-4 text-orange-500 text-xs uppercase tracking-widest font-bold">{h}</th>)}</tr></thead>
               <tbody>
                 {filtered.map((s, i) => (
                   <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
@@ -92,7 +92,7 @@ export function Trainers() {
                   <img src={t.image} alt={t.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 </div>
                 <h3 className="text-3xl font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{t.name}</h3>
-                <p className="text-yellow-400 text-xs uppercase tracking-widest font-bold mt-1 mb-3">{t.role}</p>
+                <p className="text-orange-500 text-xs uppercase tracking-widest font-bold mt-1 mb-3">{t.role}</p>
                 <p className="text-white/40 text-sm leading-relaxed mb-5">{t.bio}</p>
                 <div className="flex flex-wrap gap-2 mb-5">
                   {t.specialties.map(s => <span key={s} className="text-xs bg-white/5 border border-white/10 text-white/50 px-2.5 py-1 rounded-full">{s}</span>)}
@@ -132,19 +132,19 @@ export function Pricing() {
         <div className="max-w-6xl mx-auto">
           {/* Toggle */}
           <div className="flex items-center justify-center gap-4 mb-14">
-            <span className={`text-sm font-bold uppercase tracking-widest ${!annual ? "text-yellow-400" : "text-white/30"}`}>Monthly</span>
-            <button onClick={() => setAnnual(!annual)} className={`w-14 h-7 rounded-full transition-colors duration-300 relative ${annual ? "bg-yellow-400" : "bg-white/10"}`}>
+            <span className={`text-sm font-bold uppercase tracking-widest ${!annual ? "text-orange-500" : "text-white/30"}`}>Monthly</span>
+            <button onClick={() => setAnnual(!annual)} className={`w-14 h-7 rounded-full transition-colors duration-300 relative ${annual ? "bg-orange-500" : "bg-white/10"}`}>
               <div className={`w-5 h-5 bg-white rounded-full absolute top-1 transition-all duration-300 ${annual ? "left-8" : "left-1"}`} />
             </button>
-            <span className={`text-sm font-bold uppercase tracking-widest ${annual ? "text-yellow-400" : "text-white/30"}`}>Annual <span className="text-green-400 text-xs ml-1">Save 2 months</span></span>
+            <span className={`text-sm font-bold uppercase tracking-widest ${annual ? "text-orange-500" : "text-white/30"}`}>Annual <span className="text-green-400 text-xs ml-1">Save 2 months</span></span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1a1a1a]">
             {PLANS.map((p, i) => (
               <FadeIn key={p.name} delay={i * 100}>
-                <div className={`relative flex flex-col p-10 h-full ${p.featured ? "bg-[#111] border-t-2 border-yellow-400" : "bg-[#0a0a0a]"}`}>
-                  {p.featured && <span className="absolute -top-px right-8 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1">Most Popular</span>}
-                  <div className={`text-xs font-bold uppercase tracking-[0.3em] mb-2 ${p.featured ? "text-yellow-400" : "text-white/30"}`}>{p.name}</div>
+                <div className={`relative flex flex-col p-10 h-full ${p.featured ? "bg-[#111] border-t-2 border-orange-500" : "bg-[#0a0a0a]"}`}>
+                  {p.featured && <span className="absolute -top-px right-8 bg-orange-500 text-black text-[10px] font-black uppercase tracking-widest px-3 py-1">Most Popular</span>}
+                  <div className={`text-xs font-bold uppercase tracking-[0.3em] mb-2 ${p.featured ? "text-orange-500" : "text-white/30"}`}>{p.name}</div>
                   <div className="text-4xl sm:text-5xl font-black text-white leading-none mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>₹{price(p.price).toLocaleString()}</div>
                   <p className="text-white/30 text-sm mb-8">/{annual ? "year" : "month"}</p>
                   <ul className="flex flex-col gap-3 mb-8 flex-1">
@@ -159,7 +159,7 @@ export function Pricing() {
                       </li>
                     ))}
                   </ul>
-                  <Link to="/contact" className={`w-full py-3.5 text-sm font-black uppercase tracking-widest text-center block rounded transition-all duration-200 ${p.featured ? "bg-yellow-400 text-black hover:bg-yellow-300" : "border border-white/20 text-white/60 hover:border-yellow-400 hover:text-yellow-400"}`}>
+                  <Link to="/contact" className={`w-full py-3.5 text-sm font-black uppercase tracking-widest text-center block rounded transition-all duration-200 ${p.featured ? "bg-orange-500 text-black hover:bg-orange-600" : "border border-white/20 text-white/60 hover:border-orange-500 hover:text-orange-500"}`}>
                     Get Started
                   </Link>
                 </div>
@@ -172,9 +172,9 @@ export function Pricing() {
       {/* FAQ */}
       <section className="bg-[#0d0d0d] py-20 px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3 text-center">Got Questions?</p>
+          <p className="text-orange-500 text-xs font-bold uppercase tracking-[0.3em] mb-3 text-center">Got Questions?</p>
           <h2 className="font-black text-white text-center mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(34px,9vw,64px)" }}>
-            FAQ<span className="text-yellow-400">s</span>
+            FAQ<span className="text-orange-500">s</span>
           </h2>
           <div className="space-y-4">
             {faq.map((item, i) => (
@@ -193,7 +193,7 @@ function FAQItem({ q, a }) {
     <div className="border border-white/10 rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-6 py-4 text-left group hover:bg-white/[0.02] transition-colors">
         <span className="text-white font-medium text-sm pr-4">{q}</span>
-        <span className={`text-yellow-400 transition-transform duration-200 flex-shrink-0 ${open ? "rotate-45" : ""}`}>
+        <span className={`text-orange-500 transition-transform duration-200 flex-shrink-0 ${open ? "rotate-45" : ""}`}>
           <Plus className="w-4 h-4" />
         </span>
       </button>
@@ -254,12 +254,12 @@ export function Gallery() {
                       <span className="text-white/95 text-sm font-semibold tracking-wide block truncate">{item.label}</span>
                       <div className="text-white/50 text-xs mt-1">Gym Facility</div>
                     </div>
-                    <div className="w-10 h-10 rounded-2xl bg-white/10 border border-white/15 backdrop-blur flex items-center justify-center text-yellow-300 flex-shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 rounded-2xl bg-white/10 border border-white/15 backdrop-blur flex items-center justify-center text-orange-600 flex-shrink-0 group-hover:scale-105 transition-transform">
                       <FacilityIcon name={item.icon} className="w-5 h-5" />
                     </div>
                   </div>
 
-                  <div className="absolute top-4 left-4 w-2 h-2 rounded-full bg-yellow-400/80 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute top-4 left-4 w-2 h-2 rounded-full bg-orange-500/80 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
                   );
                 })()}
@@ -275,7 +275,7 @@ export function Gallery() {
 
 // ── BLOG PAGE ─────────────────────────────────────────────────────────────────
 export function Blog() {
-  const catColors = { Nutrition: "bg-green-400/10 text-green-400", Training: "bg-yellow-400/10 text-yellow-400", Lifestyle: "bg-blue-400/10 text-blue-400", Recovery: "bg-purple-400/10 text-purple-400" };
+  const catColors = { Nutrition: "bg-green-400/10 text-green-400", Training: "bg-orange-500/10 text-orange-500", Lifestyle: "bg-blue-400/10 text-blue-400", Recovery: "bg-purple-400/10 text-purple-400" };
   return (
     <>
       <PageHero tag="Knowledge Hub" title="FITNESS" highlight="BLOG" subtitle="Expert tips, training guides, and nutrition advice from our certified coaches." />
@@ -283,7 +283,7 @@ export function Blog() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {BLOGS.map((b, i) => (
             <FadeIn key={b.id} delay={i * 80}>
-              <Link to={`/blog/${b.id}`} className="bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden group hover:border-yellow-400/20 transition-colors cursor-pointer h-full flex flex-col">
+              <Link to={`/blog/${b.id}`} className="bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden group hover:border-orange-500/20 transition-colors cursor-pointer h-full flex flex-col">
                 <div className="h-44 relative">
                   <img src={b.image} alt={b.title} className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10" />
@@ -296,11 +296,11 @@ export function Blog() {
                     <span className={`text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full ${catColors[b.category] || "bg-white/10 text-white/50"}`}>{b.category}</span>
                     <span className="text-white/30 text-xs">{b.readTime} read</span>
                   </div>
-                  <h3 className="text-xl font-black text-white mb-2 group-hover:text-yellow-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{b.title}</h3>
+                  <h3 className="text-xl font-black text-white mb-2 group-hover:text-orange-500 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{b.title}</h3>
                   <p className="text-white/40 text-sm leading-relaxed flex-1">{b.excerpt}</p>
                   <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/5">
                     <span className="text-white/25 text-xs">{b.date}</span>
-                    <span className="text-yellow-400 text-xs font-bold inline-flex items-center gap-1">Read More <ChevronRight className="w-4 h-4" /></span>
+                    <span className="text-orange-500 text-xs font-bold inline-flex items-center gap-1">Read More <ChevronRight className="w-4 h-4" /></span>
                   </div>
                 </div>
               </Link>
@@ -344,16 +344,16 @@ export function Contact() {
                 { label: "Email", val: GYM.email },
               ].map(item => (
                 <div key={item.label}>
-                  <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-1">{item.label}</p>
+                  <p className="text-orange-500 text-xs font-bold uppercase tracking-[0.3em] mb-1">{item.label}</p>
                   <p className="text-white/60 text-base">{item.val}</p>
                 </div>
               ))}
               <div>
-                <p className="text-yellow-400 text-xs font-bold uppercase tracking-[0.3em] mb-3">Follow Us</p>
+                <p className="text-orange-500 text-xs font-bold uppercase tracking-[0.3em] mb-3">Follow Us</p>
                 <div className="flex flex-wrap gap-3">
-                  <a href={GYM.instagram} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-yellow-400 text-white/40 hover:text-yellow-400 text-xs uppercase tracking-widest rounded transition-all">Instagram</a>
-                  <a href={GYM.facebook} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-yellow-400 text-white/40 hover:text-yellow-400 text-xs uppercase tracking-widest rounded transition-all">Facebook</a>
-                  <a href={GYM.youtube} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-yellow-400 text-white/40 hover:text-yellow-400 text-xs uppercase tracking-widest rounded transition-all">YouTube</a>
+                  <a href={GYM.instagram} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-orange-500 text-white/40 hover:text-orange-500 text-xs uppercase tracking-widest rounded transition-all">Instagram</a>
+                  <a href={GYM.facebook} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-orange-500 text-white/40 hover:text-orange-500 text-xs uppercase tracking-widest rounded transition-all">Facebook</a>
+                  <a href={GYM.youtube} target="_blank" rel="noreferrer" className="px-4 py-2 border border-white/10 hover:border-orange-500 text-white/40 hover:text-orange-500 text-xs uppercase tracking-widest rounded transition-all">YouTube</a>
                 </div>
               </div>
             </div>
@@ -367,21 +367,21 @@ export function Contact() {
                 <div key={k}>
                   <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">{label}</label>
                   <input type={type} required={label.includes("*")} value={form[k]} onChange={e => f(k)(e.target.value)}
-                    className="w-full bg-[#111] border border-white/10 focus:border-yellow-400/50 outline-none text-white placeholder-white/20 px-4 py-3.5 rounded-lg text-sm transition-colors" />
+                    className="w-full bg-[#111] border border-white/10 focus:border-orange-500/50 outline-none text-white placeholder-white/20 px-4 py-3.5 rounded-lg text-sm transition-colors" />
                 </div>
               ))}
               <div>
                 <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Interested Plan</label>
-                <select value={form.plan} onChange={e => f("plan")(e.target.value)} className="w-full bg-[#111] border border-white/10 focus:border-yellow-400/50 outline-none text-white px-4 py-3.5 rounded-lg text-sm">
+                <select value={form.plan} onChange={e => f("plan")(e.target.value)} className="w-full bg-[#111] border border-white/10 focus:border-orange-500/50 outline-none text-white px-4 py-3.5 rounded-lg text-sm">
                   {["Starter", "Pro", "Elite", "Not sure yet"].map(o => <option key={o}>{o}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Your Fitness Goals</label>
                 <textarea rows={4} value={form.message} onChange={e => f("message")(e.target.value)} placeholder="Tell us about your goals, current fitness level, or any questions..."
-                  className="w-full bg-[#111] border border-white/10 focus:border-yellow-400/50 outline-none text-white placeholder-white/20 px-4 py-3.5 rounded-lg text-sm resize-none transition-colors" />
+                  className="w-full bg-[#111] border border-white/10 focus:border-orange-500/50 outline-none text-white placeholder-white/20 px-4 py-3.5 rounded-lg text-sm resize-none transition-colors" />
               </div>
-              <button type="submit" className="w-full bg-yellow-400 text-black font-black uppercase text-sm tracking-widest py-4 rounded-lg hover:bg-yellow-300 transition-all hover:scale-[1.02] duration-200">
+              <button type="submit" className="w-full bg-orange-500 text-black font-black uppercase text-sm tracking-widest py-4 rounded-lg hover:bg-orange-600 transition-all hover:scale-[1.02] duration-200">
                 {sent ? (
                   <span className="inline-flex items-center justify-center gap-2">
                     <Check className="w-4 h-4" /> Redirecting to WhatsApp...

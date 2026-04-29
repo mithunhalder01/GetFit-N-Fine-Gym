@@ -14,7 +14,7 @@ function LegalShell({ title, subtitle, children }) {
             </div>
           </div>
           <div className="mt-6 text-center">
-            <Link to="/contact" className="text-yellow-400 text-xs uppercase tracking-widest font-bold hover:underline">
+            <Link to="/contact" className="text-orange-500 text-xs uppercase tracking-widest font-bold hover:text-orange-600 hover:underline">
               Need help? Contact us
             </Link>
           </div>

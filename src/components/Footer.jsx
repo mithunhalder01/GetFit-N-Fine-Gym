@@ -10,18 +10,18 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <div className="font-black text-xl sm:text-2xl tracking-[0.12em] sm:tracking-widest text-yellow-400 mb-3 break-words" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <div className="font-black text-xl sm:text-2xl tracking-[0.12em] sm:tracking-widest text-orange-600 mb-3 break-words" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               {GYM.name}
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-4">{GYM.address}</p>
             <div className="flex gap-3">
-              <a href={GYM.instagram} target="_blank" rel="noreferrer" className="w-9 h-9 border border-white/10 hover:border-yellow-400 hover:text-yellow-400 text-white/30 flex items-center justify-center rounded transition-all duration-200">
+              <a href={GYM.instagram} target="_blank" rel="noreferrer" className="w-9 h-9 border border-white/10 hover:border-orange-600 hover:text-orange-600 text-orange-500 flex items-center justify-center rounded transition-all duration-200">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href={GYM.facebook} target="_blank" rel="noreferrer" className="w-9 h-9 border border-white/10 hover:border-yellow-400 hover:text-yellow-400 text-white/30 flex items-center justify-center rounded transition-all duration-200">
+              <a href={GYM.facebook} target="_blank" rel="noreferrer" className="w-9 h-9 border border-white/10 hover:border-orange-600 hover:text-orange-600 text-orange-500 flex items-center justify-center rounded transition-all duration-200">
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href={GYM.youtube} target="_blank" rel="noreferrer" className="w-9 h-9 border border-white/10 hover:border-yellow-400 hover:text-yellow-400 text-white/30 flex items-center justify-center rounded transition-all duration-200" aria-label="YouTube">
+              <a href={GYM.youtube} target="_blank" rel="noreferrer" className="w-9 h-9 border border-white/10 hover:border-orange-600 hover:text-orange-600 text-orange-500 flex items-center justify-center rounded transition-all duration-200" aria-label="YouTube">
                 <Youtube className="w-4 h-4" />
               </a>
             </div>
@@ -29,10 +29,10 @@ export function Footer() {
 
           {/* Quick links */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-4">Quick Links</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-4">Quick Links</p>
             <div className="flex flex-col gap-2">
               {["/", "/programs", "/trainers", "/pricing", "/gallery", "/blog"].map((to) => (
-                <Link key={to} to={to} className="text-white/40 hover:text-white text-sm transition-colors capitalize">
+                <Link key={to} to={to} className="text-orange-500 hover:text-orange-600 text-sm transition-colors capitalize">
                   {to === "/" ? "Home" : to.slice(1)}
                 </Link>
               ))}
@@ -41,17 +41,17 @@ export function Footer() {
 
           {/* Programs */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-4">Programs</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-4">Programs</p>
             <div className="flex flex-col gap-2">
               {["Strength Training", "HIIT & Cardio", "CrossFit WODs", "Yoga & Mobility", "Boxing & MMA", "Functional Fitness"].map((p) => (
-                <Link key={p} to="/programs" className="text-white/40 hover:text-white text-sm transition-colors">{p}</Link>
+                <Link key={p} to="/programs" className="text-orange-500 hover:text-orange-600 text-sm transition-colors">{p}</Link>
               ))}
             </div>
           </div>
 
           {/* Contact */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-4">Contact</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-4">Contact</p>
             <div className="flex flex-col gap-3">
               <div><p className="text-xs text-white/30 uppercase tracking-wider mb-0.5">Phone</p><p className="text-white/60 text-sm">{GYM.phone}</p></div>
               <div><p className="text-xs text-white/30 uppercase tracking-wider mb-0.5">Email</p><p className="text-white/60 text-sm">{GYM.email}</p></div>

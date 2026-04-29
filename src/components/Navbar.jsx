@@ -28,13 +28,16 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [topBarVisible, setTopBarVisible] = useState(true);
   const location = useLocation();
   const [brandFirst, ...brandRest] = GYM.name.split(" ");
   const brandRestText = brandRest.join(" ");
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 50);
+      setTopBarVisible(scrollY <= 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -49,23 +52,27 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || menuOpen
-          ? "bg-gray-950/90 backdrop-blur-md border-b border-white/10 py-0 shadow-lg" 
-          : "bg-transparent border-b border-transparent py-2"
-      }`}
-    >
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
+          topBarVisible 
+            ? "top-10 sm:top-12" 
+            : "top-0"
+        } ${
+          scrolled || menuOpen
+            ? "bg-gray-950/90 backdrop-blur-md border-b border-white/10 py-0 shadow-lg" 
+            : "bg-transparent border-b border-transparent py-2"
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
         {/* Logo */}
         <Link
           to="/"
-          className="min-w-0 flex items-baseline gap-1 sm:gap-1.5 font-black text-yellow-400 leading-none relative z-50"
+          className="min-w-0 flex items-baseline gap-1 sm:gap-1.5 font-black text-orange-500 leading-none relative z-50"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
-          <span className="text-lg sm:text-2xl tracking-[0.12em] sm:tracking-widest">
+          <span className="text-lg sm:text-xl md:text-2xl tracking-[0.1em] sm:tracking-[0.12em] md:tracking-widest">
             {brandFirst}
           </span>
-          <span className="text-[11px] sm:text-xl text-gray-100 tracking-[0.08em] sm:tracking-normal">
+          <span className="text-[10px] sm:text-sm md:text-xl text-gray-100 tracking-[0.05em] sm:tracking-[0.08em] md:tracking-normal">
             {brandRestText}
           </span>
         </Link>
@@ -78,9 +85,9 @@ export default function Navbar() {
                 <div className="group">
                   <Link
                     to={item.to || item.children[0]?.to || "/"}
-                    className={`text-sm uppercase tracking-widest font-medium transition-colors duration-200 inline-flex items-center gap-1 text-gray-200 hover:text-yellow-400 ${
+                    className={`text-sm uppercase tracking-widest font-medium transition-colors duration-200 inline-flex items-center gap-1 text-gray-200 hover:text-orange-500 ${
                       (item.to && isActive(item.to)) || isAnyActive(item.children)
-                        ? "text-yellow-400 font-bold"
+                        ? "text-orange-500 font-bold"
                         : ""
                     }`}
                   >
@@ -97,7 +104,7 @@ export default function Navbar() {
                             to={c.to}
                             className={`block px-3 py-2.5 rounded-xl text-xs uppercase tracking-widest font-semibold transition-colors text-gray-200 hover:bg-gray-800 hover:text-gray-50 ${
                               isActive(c.to)
-                                ? "bg-yellow-400/20 text-yellow-500 font-bold"
+                                ? "bg-orange-500/20 text-orange-600 font-bold"
                                 : ""
                             }`}
                           >
@@ -111,8 +118,8 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={item.to}
-                  className={`text-sm uppercase tracking-widest font-medium transition-colors duration-200 text-gray-200 hover:text-yellow-400 ${
-                    isActive(item.to) ? "text-yellow-400 font-bold" : ""
+                  className={`text-sm uppercase tracking-widest font-medium transition-colors duration-200 text-gray-200 hover:text-orange-500 ${
+                    isActive(item.to) ? "text-orange-500 font-bold" : ""
                   }`}
                 >
                   {item.label}
@@ -124,7 +131,7 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 relative z-50">
-          <Link to="/contact" className="hidden lg:block bg-yellow-400 hover:bg-yellow-500 text-black text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full shadow-lg transition-all duration-200">
+          <Link to="/contact" className="hidden lg:block bg-orange-500 hover:bg-orange-600 text-black text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full shadow-lg transition-all duration-200">
             Join Now
           </Link>
 
@@ -144,21 +151,21 @@ export default function Navbar() {
           menuOpen ? "translate-y-0 opacity-100 visible max-h-screen" : "-translate-y-full opacity-0 invisible max-h-0"
         }`}
       >
-        <div className="flex flex-col gap-4 px-6 pt-20 pb-8">
+        <div className="flex flex-col gap-3 px-5 sm:px-6 pt-20 pb-8">
           {NAV_LINKS.map((item) => (
-            <div key={item.label} className="flex flex-col gap-3 border-b border-white/5 pb-4 last:border-b-0">
+            <div key={item.label} className="flex flex-col gap-2 border-b border-white/5 pb-3 last:border-b-0">
               {item.children ? (
                 <>
-                  <div className="text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 px-1">
+                  <div className="text-[9px] uppercase tracking-[0.18em] font-black text-gray-500 px-1">
                     {item.label}
                   </div>
-                  <div className="flex flex-col gap-3 pl-4">
+                  <div className="flex flex-col gap-2 pl-3">
                     {item.children.map((c) => (
                       <Link
                         key={c.to}
                         to={c.to}
-                        className={`text-lg font-bold transition-colors ${
-                          isActive(c.to) ? "text-yellow-400" : "text-gray-200"
+                        className={`text-base sm:text-lg font-bold transition-colors ${
+                          isActive(c.to) ? "text-orange-500" : "text-gray-200"
                         }`}
                         onClick={() => setMenuOpen(false)}
                       >
@@ -170,8 +177,8 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={item.to}
-                  className={`text-xl font-black uppercase tracking-tight transition-colors ${
-                    isActive(item.to) ? "text-yellow-400" : "text-white"
+                  className={`text-lg sm:text-xl font-black uppercase tracking-tight transition-colors ${
+                    isActive(item.to) ? "text-orange-500" : "text-white"
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
@@ -180,11 +187,11 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <div className="pt-4">
+          <div className="pt-3">
             <Link 
               to="/contact" 
               onClick={() => setMenuOpen(false)}
-              className="bg-yellow-400 text-black text-sm font-black uppercase tracking-widest py-4 rounded-xl text-center block shadow-lg active:scale-95 transition-transform"
+              className="bg-orange-500 text-black text-sm font-black uppercase tracking-widest py-3.5 rounded-xl text-center block shadow-lg active:scale-95 transition-transform"
             >
               Join Now
             </Link>

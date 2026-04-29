@@ -77,7 +77,7 @@ export default function AdminMembers() {
         <StatCard icon={<Users className="w-5 h-5" />} label="Total Members" value={members.length} />
         <StatCard icon={<Check className="w-5 h-5" />} label="Active" value={members.filter(m => m.active).length} color="text-green-400" />
         <StatCard icon={<CircleDot className="w-5 h-5" />} label="Fee Overdue" value={members.filter(m => isFeeOverdue(m.feeDueDate)).length} color="text-red-400" />
-        <StatCard icon={<Cake className="w-5 h-5" />} label="Birthdays Today" value={members.filter(m => isBirthdayToday(m.birthday)).length} color="text-yellow-400" />
+        <StatCard icon={<Cake className="w-5 h-5" />} label="Birthdays Today" value={members.filter(m => isBirthdayToday(m.birthday)).length} color="text-orange-500" />
       </div>
 
       {/* Controls */}
@@ -85,7 +85,7 @@ export default function AdminMembers() {
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
           <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search by name or phone..."
-            className="w-full bg-gray-900 border border-white/10 focus:border-yellow-400/50 outline-none text-white placeholder-white/30 pl-10 pr-4 py-2.5 rounded-xl text-sm" />
+            className="w-full bg-gray-900 border border-white/10 focus:border-orange-500/50 outline-none text-white placeholder-white/30 pl-10 pr-4 py-2.5 rounded-xl text-sm" />
         </div>
         <select value={filterPlan} onChange={e => setFilterPlan(e.target.value)} className="bg-gray-900 border border-white/10 text-white/70 px-4 py-2.5 rounded-xl text-sm outline-none">
           {["All", "Starter", "Pro", "Elite"].map(p => <option key={p}>{p}</option>)}
@@ -93,7 +93,7 @@ export default function AdminMembers() {
         <select value={filterFee} onChange={e => setFilterFee(e.target.value)} className="bg-gray-900 border border-white/10 text-white/70 px-4 py-2.5 rounded-xl text-sm outline-none">
           {[["All", "All Fees"], ["paid", "Fee Paid"], ["due_soon", "Due Soon"], ["overdue", "Overdue"]].map(([v, l]) => <option key={v} value={v}>{l}</option>)}
         </select>
-        <button onClick={openAdd} className="bg-yellow-400 text-black font-black text-xs uppercase tracking-widest px-5 py-2.5 rounded-xl hover:bg-yellow-300 transition-colors whitespace-nowrap">
+        <button onClick={openAdd} className="bg-orange-500 text-black font-black text-xs uppercase tracking-widest px-5 py-2.5 rounded-xl hover:bg-orange-600 transition-colors whitespace-nowrap">
           <span className="inline-flex items-center gap-2"><Plus className="w-4 h-4" /> Add Member</span>
         </button>
       </div>
@@ -129,12 +129,12 @@ export default function AdminMembers() {
                   <td className="py-3.5 px-4 text-white/30 text-sm">{i + 1}</td>
                   <td className="py-3.5 px-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center text-yellow-400 text-xs font-black flex-shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500 text-xs font-black flex-shrink-0">
                         {m.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
                       </div>
                       <div>
                         <p className="text-white text-sm font-medium">{m.name}</p>
-                        {isBirthdayToday(m.birthday) && <span className="text-yellow-400 text-xs inline-flex items-center gap-1.5"><Cake className="w-3.5 h-3.5" /> Birthday today</span>}
+                        {isBirthdayToday(m.birthday) && <span className="text-orange-500 text-xs inline-flex items-center gap-1.5"><Cake className="w-3.5 h-3.5" /> Birthday today</span>}
                         {m.notes && <p className="text-white/30 text-xs truncate max-w-[120px]">{m.notes}</p>}
                       </div>
                     </div>
@@ -156,7 +156,7 @@ export default function AdminMembers() {
                         className="text-white/40 hover:text-green-400 hover:bg-green-400/10 text-xs px-2.5 py-1.5 rounded-lg transition-all" title="Send fee reminder" aria-label="Send fee reminder">
                         <MessageCircle className="w-4 h-4" />
                       </a>
-                      <button onClick={() => toggleActive(m.id)} className="text-white/40 hover:text-yellow-400 hover:bg-yellow-400/10 text-xs px-2.5 py-1.5 rounded-lg transition-all" title={m.active ? "Deactivate" : "Activate"} aria-label={m.active ? "Deactivate" : "Activate"}>
+                      <button onClick={() => toggleActive(m.id)} className="text-white/40 hover:text-orange-500 hover:bg-orange-500/10 text-xs px-2.5 py-1.5 rounded-lg transition-all" title={m.active ? "Deactivate" : "Activate"} aria-label={m.active ? "Deactivate" : "Activate"}>
                         {m.active ? <CircleDot className="w-4 h-4" /> : <Circle className="w-4 h-4" />}
                       </button>
                       <button onClick={() => setDeleteId(m.id)} className="text-white/40 hover:text-red-400 hover:bg-red-400/10 text-xs px-2.5 py-1.5 rounded-lg transition-all" title="Delete" aria-label="Delete">
@@ -169,7 +169,7 @@ export default function AdminMembers() {
             </tbody>
           </table>
           {filtered.length === 0 && (
-            <div className="text-center py-12 text-white/30">No members found. <button onClick={openAdd} className="text-yellow-400 hover:underline">Add one?</button></div>
+            <div className="text-center py-12 text-white/30">No members found. <button onClick={openAdd} className="text-orange-500 hover:underline">Add one?</button></div>
           )}
         </div>
       </div>
@@ -193,10 +193,10 @@ export default function AdminMembers() {
           <div>
             <label className="block text-sm text-white/60 mb-1.5">Notes</label>
             <textarea value={form.notes} onChange={e => f("notes")(e.target.value)} placeholder="Any special notes..."
-              className="w-full bg-gray-800 border border-white/10 focus:border-yellow-400/50 outline-none text-white placeholder-white/20 px-4 py-3 rounded-xl text-sm resize-none" rows={2} />
+              className="w-full bg-gray-800 border border-white/10 focus:border-orange-500/50 outline-none text-white placeholder-white/20 px-4 py-3 rounded-xl text-sm resize-none" rows={2} />
           </div>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <button onClick={handleSave} className="flex-1 bg-yellow-400 text-black font-black uppercase text-sm tracking-widest py-3 rounded-xl hover:bg-yellow-300 transition-colors">
+            <button onClick={handleSave} className="flex-1 bg-orange-500 text-black font-black uppercase text-sm tracking-widest py-3 rounded-xl hover:bg-orange-600 transition-colors">
               {editMember ? "Save Changes" : "Add Member"}
             </button>
             <button onClick={() => setModalOpen(false)} className="px-6 border border-white/10 text-white/50 rounded-xl hover:bg-white/5 transition-colors">Cancel</button>
