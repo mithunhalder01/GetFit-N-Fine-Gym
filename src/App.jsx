@@ -56,7 +56,7 @@ export default function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       <Routes>
         {/* Public - Only Home page for demo */}
         <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />

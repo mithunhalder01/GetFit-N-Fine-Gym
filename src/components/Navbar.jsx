@@ -63,18 +63,16 @@ export default function Navbar() {
         }`}
       >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
-        {/* Logo */}
+{/* Logo */}
         <Link
           to="/"
-          className="min-w-0 flex items-baseline gap-1 sm:gap-1.5 font-black text-orange-500 leading-none relative z-50"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          className="flex items-center gap-2 relative z-50"
         >
-          <span className="text-lg sm:text-xl md:text-2xl tracking-[0.1em] sm:tracking-[0.12em] md:tracking-widest">
-            {brandFirst}
-          </span>
-          <span className="text-[10px] sm:text-sm md:text-xl text-gray-100 tracking-[0.05em] sm:tracking-[0.08em] md:tracking-normal">
-            {brandRestText}
-          </span>
+          <img 
+            src="/navlogo.png" 
+            alt={GYM.name}
+className="h-14 sm:h-16 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop links */}

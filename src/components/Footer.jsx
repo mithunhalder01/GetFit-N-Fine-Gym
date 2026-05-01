@@ -8,11 +8,15 @@ export function Footer() {
     <footer className="bg-gray-950 text-white border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
+{/* Brand */}
           <div>
-            <div className="font-black text-xl sm:text-2xl tracking-[0.12em] sm:tracking-widest text-orange-600 mb-3 break-words" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              {GYM.name}
-            </div>
+            <Link to="/" className="inline-block mb-3">
+              <img 
+                src="/navlogo.png" 
+                alt={GYM.name}
+className="h-16 sm:h-20 w-auto object-contain"
+              />
+            </Link>
             <p className="text-white/40 text-sm leading-relaxed mb-4">{GYM.address}</p>
             <div className="flex gap-3">
               <a href={GYM.instagram} target="_blank" rel="noreferrer" className="w-9 h-9 border border-white/10 hover:border-orange-600 hover:text-orange-600 text-orange-500 flex items-center justify-center rounded transition-all duration-200">
