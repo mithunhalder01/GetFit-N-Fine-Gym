@@ -7,24 +7,12 @@ import { Programs, Trainers, Pricing, Gallery, Blog, Contact } from "./pages/Pub
 import { PrivacyPolicy, RefundPolicy, TermsOfService } from "./pages/Legal";
 import BlogPost from "./pages/BlogPost";
 
-// Admin
-import AdminLogin from "./pages/admin/AdminLogin";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminMembers from "./pages/admin/AdminMembers";
-import AdminSchedule from "./pages/admin/AdminSchedule";
-import AdminFestival from "./pages/admin/AdminFestival";
-
 // Components
 import TopBar from "./components/TopBar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import Seo from "./components/Seo";
-
-function AdminGuard({ children }) {
-  const isAuth = localStorage.getItem("gym_admin_auth") === "true";
-  return isAuth ? children : <Navigate to="/admin/login" replace />;
-}
 
 function PublicLayout({ children }) {
   return (
@@ -39,13 +27,12 @@ function PublicLayout({ children }) {
   );
 }
 
-function AdminLayout({ children }) {
-  return (
-    <div className="bg-gray-950 min-h-screen">
-      <Seo noIndex />
-      {children}
-    </div>
-  );
+function AdminRedirect() {
+  useEffect(() => {
+    window.location.replace("https://fitflow-gms-v1.vercel.app/");
+  }, []);
+
+  return null;
 }
 
 export default function App() {
@@ -71,12 +58,8 @@ export default function App() {
         <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
         <Route path="/refund" element={<PublicLayout><RefundPolicy /></PublicLayout>} />
 
-        {/* Admin routes */}
-        <Route path="/admin/login" element={<AdminLayout><AdminLogin /></AdminLayout>} />
-        <Route path="/admin" element={<AdminGuard><AdminLayout><AdminDashboard /></AdminLayout></AdminGuard>} />
-        <Route path="/admin/members" element={<AdminGuard><AdminLayout><AdminMembers /></AdminLayout></AdminGuard>} />
-        <Route path="/admin/schedule" element={<AdminGuard><AdminLayout><AdminSchedule /></AdminLayout></AdminGuard>} />
-        <Route path="/admin/festival" element={<AdminGuard><AdminLayout><AdminFestival /></AdminLayout></AdminGuard>} />
+        {/* The external admin app already handles authentication. */}
+        <Route path="/admin/*" element={<AdminRedirect />} />
 
         {/* Unknown routes */}
         <Route path="*" element={<Navigate to="/" replace />} />
