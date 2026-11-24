@@ -56,31 +56,29 @@ export default function App() {
   }, []);
 
   return (
-    <BrowserRouter> 
+    <BrowserRouter>
       <Routes>
-        {/* Public - Only Home page for demo */}
+        {/* Public routes */}
         <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
-        
-        {/* Commented out for demo - uncomment when ready to launch */}
-        {/* <Route path="/programs" element={<PublicLayout><Programs /></PublicLayout>} /> */}
-        {/* <Route path="/trainers" element={<PublicLayout><Trainers /></PublicLayout>} /> */}
-        {/* <Route path="/pricing" element={<PublicLayout><Pricing /></PublicLayout>} /> */}
-        {/* <Route path="/gallery" element={<PublicLayout><Gallery /></PublicLayout>} /> */}
-        {/* <Route path="/blog" element={<PublicLayout><Blog /></PublicLayout>} /> */}
-        {/* <Route path="/blog/:id" element={<PublicLayout><BlogPost /></PublicLayout>} /> */}
-        {/* <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} /> */}
-        {/* <Route path="/privacy" element={<PublicLayout><PrivacyPolicy /></PublicLayout>} /> */}
-        {/* <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} /> */}
-        {/* <Route path="/refund" element={<PublicLayout><RefundPolicy /></PublicLayout>} /> */}
+        <Route path="/programs" element={<PublicLayout><Programs /></PublicLayout>} />
+        <Route path="/trainers" element={<PublicLayout><Trainers /></PublicLayout>} />
+        <Route path="/pricing" element={<PublicLayout><Pricing /></PublicLayout>} />
+        <Route path="/gallery" element={<PublicLayout><Gallery /></PublicLayout>} />
+        <Route path="/blog" element={<PublicLayout><Blog /></PublicLayout>} />
+        <Route path="/blog/:id" element={<PublicLayout><BlogPost /></PublicLayout>} />
+        <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
+        <Route path="/privacy" element={<PublicLayout><PrivacyPolicy /></PublicLayout>} />
+        <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
+        <Route path="/refund" element={<PublicLayout><RefundPolicy /></PublicLayout>} />
 
-        {/* Admin - Commented out for demo */}
-        {/* <Route path="/admin/login" element={<AdminLayout><AdminLogin /></AdminLayout>} /> */}
-        {/* <Route path="/admin" element={<AdminGuard><AdminLayout><AdminDashboard /></AdminLayout></AdminGuard>} /> */}
-        {/* <Route path="/admin/members" element={<AdminGuard><AdminLayout><AdminMembers /></AdminLayout></AdminGuard>} /> */}
-        {/* <Route path="/admin/schedule" element={<AdminGuard><AdminLayout><AdminSchedule /></AdminLayout></AdminGuard>} /> */}
-        {/* <Route path="/admin/festival" element={<AdminGuard><AdminLayout><AdminFestival /></AdminLayout></AdminGuard>} /> */}
-        
-        {/* Redirect all other routes to home for demo */}
+        {/* Admin routes */}
+        <Route path="/admin/login" element={<AdminLayout><AdminLogin /></AdminLayout>} />
+        <Route path="/admin" element={<AdminGuard><AdminLayout><AdminDashboard /></AdminLayout></AdminGuard>} />
+        <Route path="/admin/members" element={<AdminGuard><AdminLayout><AdminMembers /></AdminLayout></AdminGuard>} />
+        <Route path="/admin/schedule" element={<AdminGuard><AdminLayout><AdminSchedule /></AdminLayout></AdminGuard>} />
+        <Route path="/admin/festival" element={<AdminGuard><AdminLayout><AdminFestival /></AdminLayout></AdminGuard>} />
+
+        {/* Unknown routes */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
